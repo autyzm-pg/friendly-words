@@ -1,9 +1,22 @@
 import React from "react";
-import {Text, TouchableOpacity} from "react-native";
-import Tts from "react-native-tts"
+import {Text, View, StyleSheet} from "react-native";
 import _ from "lodash";
+import CapriolaText from "../ui/CapriolaText";
+import colors from "../../assets/colours";
 
 export default Command = ({text, word}) =>
-	<TouchableOpacity onPress={ () => Tts.speak(_.replace(text, '{slowo}', word))}>
-		<Text style={{marginTop: 100}}>{_.replace(text, '{slowo}', word)}</Text>
-	</TouchableOpacity>;
+	<View style={styles.container}>
+		<CapriolaText style={styles.text}>{_.replace(text, '{slowo}', word)}</CapriolaText>
+	</View>;
+
+const styles = StyleSheet.create({
+	container: {
+		alignSelf: "center",
+		marginBottom: 40
+	},
+
+	text: {
+		fontSize: 50,
+		color: colors.white
+	}
+});

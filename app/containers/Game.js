@@ -1,62 +1,94 @@
 import React, {Component} from "react"
-import {View, Text, Button, StyleSheet} from "react-native"
-import Options from "../components/game/Options";
-import Command from "../components/game/Command";
+import {View, Button, StyleSheet, StatusBar, Animated, Text, Easing, LayoutAnimation} from "react-native"
 import RewardScreen from "../containers/RewardScreen";
 import _ from "lodash";
+import CapriolaText from "../components/ui/CapriolaText";
+import PlayScreen from "../containers/PlayScreen";
+import { LinearGradient } from 'expo';
+import Colours from "../assets/colours";
+
+class SummaryScreen extends Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		return <View><CapriolaText>jeszcze raz</CapriolaText></View>
+	}
+}
+
+const GAME_STATES = {
+	reward: "reward",
+	play: "play",
+	summary: "summary"
+};
+
+
 
 export default class Game extends Component {
 
 	constructor(props) {
 		super(props);
-		this.changeStep = this.changeStep.bind(this);
+		this.setNextLevel = this.setNextLevel.bind(this);
 		this.showReward = this.showReward.bind(this);
-		this.state = {materials: this.getRandomMaterials()};
+		this.findCorrectAnswer = this.findCorrectAnswer.bind(this);
+		this.state = {gameState: GAME_STATES.play, words: this.props.levels.next().value}
 	}
 
-	getRandomMaterials(){
-		debugger;
-		const materials = _.uniq(_.sampleSize(this.props.materials, this.props.picturesNumber));
-		return _.isEqual(materials.length, this.props.picturesNumber)
-			? materials
-			: this.getRandomMaterials();
+	setNextLevel() {
+		const level = this.props.levels.next();
+
+		level.done
+			? this.setState({gameState: GAME_STATES.summary})
+			: this.setState({gameState: GAME_STATES.play, words: level.value});
 	}
 
-	getMaterialsForLevel(){
-		return {
-			words: _.shuffle(this.getRandomMaterials()),
-			correctWord: _.sample(this.materials)
+	showReward() {
+		this.setState({gameState: GAME_STATES.reward})
+	}
+
+	findCorrectAnswer(){
+		return _.find(this.state.words, 'isCorrectAnswer');
+	}
+
+	getActiveScreen(){
+		const correctWord = this.findCorrectAnswer();
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+		switch (this.state.gameState) {
+			case GAME_STATES.reward:
+				return <RewardScreen word={correctWord}
+				                     onPress={this.setNextLevel}
+				                     textReward={_.sample(this.props.textRewards)}
+									shouldReadReward={this.props.shouldReadReward}/>;
+			case GAME_STATES.play:
+				return <PlayScreen command={this.props.command}
+				                   words={this.state.words}
+				                   correctWord={correctWord.name}
+				                   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
+				                   shouldReadCommand={this.props.shouldReadCommand}
+				                   onCorrectAnswer={this.showReward}/>;
+				break;
+			case GAME_STATES.summary:
+				return <SummaryScreen />;
+				break;
 		}
-	}
-
-	changeStep(){
-		this.setState(this.getMaterialsForLevel());
-	}
-
-	showReward(){
-		this.setState({isAnswerCorrect: true})
 	}
 
 	render() {
 		return <View style={styles.container}>
-			{ this.state.isAnswerCorrect
-				? <RewardScreen textReward="BRAWO NIGGA" word={this.state.correctWord.name}
-				                onPress={() => this.setState({isAnswerCorrect: false}, this.changeStep)}/>
-				: <View>
-					<Command text={this.props.command} word={this.state.correctWord.name}/>
-					<Options materials={this.state.words} onCorrect={this.showReward} correct={this.state.correctWord}/>
-				</View>
-			}
+			<StatusBar hidden={true} />
+			{this.getActiveScreen()}
 		</View>;
 	}
 };
 
 const styles = StyleSheet.create({
  container: {
- flex: 1,
- alignItems: 'center',
- justifyContent: 'center',
- backgroundColor: '#becd00',
+ 	backgroundColor: Colours.easternBlue,
+	 flex: 1
  }
 });
+
+
 

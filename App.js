@@ -1,54 +1,94 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Game from "./app/containers/Game"
 import {StackNavigator} from "react-navigation";
-import MainScreen from './app/containers/MainScreen';
-import RewardScreen from './app/containers/RewardScreen';
+import {View, Text} from "react-native";
 import _ from "lodash";
+import {Font} from "expo";
+
+const images = {
+	pilka1: require("./app/assets/ball.png"),
+	pilka2: require("./app/assets/ball1.jpg"),
+	pilka3: require("./app/assets/ball2.jpg"),
+
+	cat1: require("./app/assets/cat1.jpg"),
+	cat2: require("./app/assets/cat3.jpg"),
+
+	dog1: require("./app/assets/dog1.jpg"),
+	dog2: require("./app/assets/dog2.jpg"),
+	dog3: require("./app/assets/dog3.jpg"),
+
+	doll: require("./app/assets/doll1.jpeg")
+};
 
 const CONFIG = {
 	materials: [
 		{
 			name: "piłka",
-			images: ["https://images-eu.ssl-images-amazon.com/images/I/816a0-Nu6TL._SY355_.jpg",
-				"http://images.clipartpanda.com/ball-clipart-soccer-ball.jpg"]
+			images: [images.pilka1, images.pilka2, images.pilka3]
 		},
 		{
-			name: "arbuz",
-			images: ["https://img.memecdn.com/nigga-science_o_692878.jpg",
-				"http://polki.pl/foto/4_3_SMALL/pomysly-na-arbuza-159937.jpg",
-				"http://www.niam.pl/rimages/crop/600/450/files/images/PRODUCT/BACKUP/63845620617_zccpfwcewjikqqpkquzo.jpg"
-			]
+			name: "kotek",
+			images: [images.cat1, images.cat2]
 		},
 		{
-			name: "kurczak",
-			images: ["https://img.memecdn.com/just-a-nigga-with-his-chicken_gp_1489329.jpg"]
+			name: "piesek",
+			images: [images.dog1, images.dog2, images.dog3]
+		},
+		{
+			name: "lalka",
+			images: [images.doll]
 		}
 	],
-	hintType: ["wyszarz", "dupa"],
+
+	hintType: ["fade"],
 	picturesNumber: 3,
 	isTextForPicture: true,
-	isReadingCommands: true,
-	showHintAfter: 2,
+	isReadingCommands: false,
+	showHintAfter: 10,
 	commandText: "Pokaż gdzie jest {slowo}",
-	numberOfRepetitions: 3,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak", "O kurwa", "śmigaj dzieciaku"],
-	isReadingRewards: true,
+	numberOfRepetitions: 2,
+	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
+	isReadingRewards: false,
 };
 
-function replicateMaterials(materials, n){
-	return _.flatMap(
-		_.map(materials, material =>
-			_.map(_.range(n), () => {return {name: material.name, image: _.sample(material.images)}})))
+function prepareLevels(materials, repetitions, optionsNumber){
+	let levels = _.shuffle(_.flatMap(materials, material =>
+		_.map(_.range(repetitions),
+			() => _.shuffle(_.concat(_.sampleSize(_.reject(materials, material), optionsNumber-1), {name: material.name, images: material.images, isCorrectAnswer: true})))));
+
+	levels = _.map(levels, level => _.map(level, material => ({...material, image: _.sample(material.images)})));
+	return _(levels);
 }
 
-const GameScreen = () => {
-	return <Game materials={replicateMaterials(CONFIG.materials, CONFIG.numberOfRepetitions)} command={CONFIG.commandText} picturesNumber={CONFIG.picturesNumber}
-	             textReward={CONFIG.textRewards} />
-};
+
+class GameScreen extends Component {
+	state = {
+		fontLoaded: false,
+	};
+
+	async componentDidMount(){
+		await Font.loadAsync({
+			'capriola-regular': require('./app/assets/Capriola-Regular.ttf'),
+			'Icomoon': require('./app/assets/fonts/icomoon.ttf')
+		});
+		this.setState({ fontLoaded: true });
+	}
+
+	render() {
+		return this.state.fontLoaded &&
+			<Game levels={prepareLevels(CONFIG.materials, CONFIG.numberOfRepetitions, CONFIG.picturesNumber)}
+		             command={CONFIG.commandText}
+		             textRewards={CONFIG.textRewards}
+			      shouldShowPicturesLabels={CONFIG.isTextForPicture}
+			      shouldReadReward={CONFIG.isReadingRewards}
+			      shouldReadCommand={CONFIG.isReadingCommands}
+			/>
+	}
+}
 
 export default App = StackNavigator(
 	{
-		Home: {screen: MainScreen},
+		Home: {screen: GameScreen},
 		Game: {screen: GameScreen}
 	},
 	{
