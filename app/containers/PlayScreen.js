@@ -6,16 +6,39 @@ import Command from "../components/game/Command";
 import _ from "lodash";
 import {speak} from '../services/speaker';
 
+class ReadingCommandButton extends Component {
+	constructor(props){
+		super(props);
+		this.toggleAvailability = this.toggleAvailability.bind(this);
+		this.readCommand = this.readCommand.bind(this);
+		this.state = {
+			isAvailable: true
+		}
+	}
+
+	toggleAvailability(){
+		this.setState({isAvailable: !this.state.isAvailable})
+	}
+
+	readCommand(){
+		const {onStart, onDone, command} = this.props;
+		speak(command, {
+			onStart: () => {onStart && onStart(); this.toggleAvailability()},
+			onDone: () => {onDone && onDone(); this.toggleAvailability()}
+		});
+	}
+
+	render(){
+		return <BorderedButton icon="sound" title="odtwórz polecenie" disabled={!this.state.isAvailable} onPress={()=>this.readCommand()}/>
+	}
+}
 export default class PlayScreen extends Component {
 	constructor(props){
 		super(props);
-		this.readCommand = this.readCommand.bind(this);
 		this.showOptions = this.showOptions.bind(this);
-		this.state = {shouldShowOptions: false}
-	}
 
-	readCommand(options={}){
-		speak(_.replace(this.props.command, '{slowo}', this.props.correctWord), options);
+		this.readableCommand = _.replace(this.props.command, '{slowo}', this.props.correctWord);
+		this.state = {shouldShowOptions: false}
 	}
 
 	showOptions() {
@@ -24,21 +47,21 @@ export default class PlayScreen extends Component {
 
 	componentWillMount(){
 		this.props.shouldReadCommand
-			? this.readCommand({onDone: this.showOptions})
+			? speak(this.readableCommand, {onDone: this.showOptions})
 			: _.delay(this.showOptions, 500);
 	}
 
 	render(){
-		const materials = this.props.shouldShowPicturesLabels || true ? this.props.words : _.map(this.props.words, word => _.omit(word, 'name'));
+		const materials = this.props.shouldShowPicturesLabels  ? this.props.words : _.map(this.props.words, word => _.omit(word, 'name'));
 
 		return <View style={styles.playSceneContainer}>
 			<View style={styles.topbar}>
 				<BorderedButton icon="left-arrow" title="odtwórz polecenie" onPress={()=>{}}/>
-				<BorderedButton icon="sound" title="odtwórz polecenie" onPress={()=>this.readCommand()}/>
+				<ReadingCommandButton command={this.readableCommand} />
 			</View>
 			<View style={{alignSelf: "stretch", flex: 1, justifyContent: 'center', alignItems:'center'}}>
 			<Command text={this.props.command} word={this.props.correctWord}/>
-			{ ( this.state.shouldShowOptions || true ) && <Options materials={materials}
+			{ this.state.shouldShowOptions && <Options materials={materials}
 			                                                       onCorrect={this.props.onCorrectAnswer} />}
 			</View>
 		</View>;

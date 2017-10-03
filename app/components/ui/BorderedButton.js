@@ -3,8 +3,8 @@ import {View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import Icon from "../../components/ui/Icon";
 import colours from "../../assets/colours";
 
-export default BorderedButton = ({title, onPress, icon}) =>
-	<TouchableOpacity onPress={onPress}>
+export default BorderedButton = ({title, onPress, icon, disabled}) =>
+	<TouchableOpacity onPress={onPress} disabled={disabled}>
 		<View style={styles.border}>
 		<View style={[styles.button, styles.centered]}>
 			<View style={[styles.iconWrapper, styles.centered]}><Icon color={colours.easternBlue} size={30} name={icon}/></View>

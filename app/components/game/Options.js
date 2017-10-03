@@ -3,13 +3,12 @@ import {View, TouchableOpacity, StyleSheet, Text, UIManager} from "react-native"
 import _ from "lodash";
 import WordCard from "../ui/WordCard";
 
-function getRandomDegree(){
-	return _.random(-10, 10);
-}
-export const Option = ({material, image, onPress}) =>
-	<TouchableOpacity onPress={onPress}>
-		<WordCard isClickable text={material} imageUrl={image}/>
-	</TouchableOpacity>;
+export const Option = ({material, image, onPress}) => {
+	const wordCard = <WordCard isClickable text={material} imageUrl={image}/>;
+	return onPress
+		? <TouchableOpacity onPress={onPress}>{wordCard}</TouchableOpacity>
+		: <View>{wordCard}</View>
+};
 
 
 const FadingOption = (props) =>
@@ -26,8 +25,6 @@ class CorretOption extends React.Component {
 		return <View><Option {...this.props} /></View>
 	}
 }
-const Hint = () =>
-	<Text>TUTEJ</Text>;
 
 const FadeAwayHintOptions = ({materials, onCorrect, shouldShowHint}) =>
 	<View style={styles.container}>

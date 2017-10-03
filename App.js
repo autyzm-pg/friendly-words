@@ -42,8 +42,8 @@ const CONFIG = {
 
 	hintType: ["fade"],
 	picturesNumber: 3,
-	isTextForPicture: true,
-	isReadingCommands: false,
+	isTextForPicture: false,
+	isReadingCommands: true,
 	showHintAfter: 10,
 	commandText: "Pokaż gdzie jest {slowo}",
 	numberOfRepetitions: 2,
