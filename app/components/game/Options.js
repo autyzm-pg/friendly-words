@@ -50,7 +50,11 @@ export default class Options extends React.Component{
 	}
 
 	componentDidMount(){
-		this.idk = setTimeout(() => {this.showHint()}, 3000);
+		if(this.props.showHintAfter) {
+			this.idk = setTimeout(() => {
+				this.showHint()
+			}, this.props.showHintAfter * 1000);
+		}
 	}
 
 	showHint(){

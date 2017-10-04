@@ -23,7 +23,7 @@ export default images = {
 	mis1: require("./app/assets/images/mis1.jpg"),
 	mis2: require("./app/assets/images/mis2.jpg"),
 	mis3: require("./app/assets/images/mis3.jpg"),
-	//
+
 	tablet1: require("./app/assets/images/tablet1.png"),
 	tablet2: require("./app/assets/images/tablet2.jpg"),
 	tablet3: require("./app/assets/images/tablet3.jpg"),
@@ -55,6 +55,6 @@ export default images = {
 	parasol1: require("./app/assets/images/parasol1.jpg"),
 	parasol2: require("./app/assets/images/parasol2.jpg"),
 	parasol3: require("./app/assets/images/parasol3.jpg")
-	//
+
 
 };

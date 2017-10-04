@@ -6,6 +6,7 @@ import CapriolaText from "../components/ui/CapriolaText";
 import PlayScreen from "../containers/PlayScreen";
 import { LinearGradient } from 'expo';
 import Colours from "../assets/colours";
+import { NavigationActions } from 'react-navigation';
 
 class SummaryScreen extends Component {
 	constructor(props){
@@ -13,7 +14,9 @@ class SummaryScreen extends Component {
 	}
 
 	render(){
-		return <View><CapriolaText>jeszcze raz</CapriolaText></View>
+		return <View>
+			<Button title="Zacznij od nowa" onPress={this.props.onAccept}/>
+		</View>
 	}
 }
 
@@ -72,10 +75,12 @@ export default class Game extends Component {
 				                   correctWord={correctWord.name}
 				                   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
 				                   shouldReadCommand={this.props.shouldReadCommand}
-				                   onCorrectAnswer={this.showReward}/>;
+				                   onCorrectAnswer={this.showReward}
+				                   showHintAfter={this.props.showHintAfter}
+				/>;
 				break;
 			case GAME_STATES.summary:
-				return <SummaryScreen />;
+				return <SummaryScreen onAccept={this.props.goToMainScreen}/>;
 				break;
 		}
 	}

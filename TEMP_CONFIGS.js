@@ -51,7 +51,7 @@ let FrycekTestConfig = {
 	picturesNumber: 3,
 	isTextForPicture: false,
 	isReadingCommands: true,
-	showHintAfter: 12,
+	showHintAfter: undefined,
 	commandText: "Gdzie jest {slowo}",
 	numberOfRepetitions: 3,
 	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],

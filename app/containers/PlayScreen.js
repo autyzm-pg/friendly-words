@@ -62,7 +62,7 @@ export default class PlayScreen extends Component {
 			<View style={{alignSelf: "stretch", flex: 1, justifyContent: 'center', alignItems:'center'}}>
 			<Command text={this.props.command} word={this.props.correctWord}/>
 			{ this.state.shouldShowOptions && <Options materials={materials}
-			                                                       onCorrect={this.props.onCorrectAnswer} />}
+			                                                       onCorrect={this.props.onCorrectAnswer} showHintAfter={this.props.showHintAfter}/>}
 			</View>
 		</View>;
 	}
