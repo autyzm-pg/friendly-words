@@ -4,6 +4,35 @@
     {
       "icon": {
         "paths": [
+          "M898.899 439.448l-681.411-429.329c-20.145-11.993-45.159-9.995-64.050-9.995-75.567 0-75.232 58.343-75.232 73.124v877.501c0 12.496-0.331 73.128 75.232 73.128 18.892 0 43.91 1.989 64.050-9.999l681.407-429.325c55.93-33.28 46.266-72.555 46.266-72.555s9.669-39.275-46.261-72.55z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "music-player-play"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 16,
+        "id": 9,
+        "name": "play",
+        "prevSize": 32,
+        "code": 59656
+      },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960c-247.424 0-448-200.576-448-448s200.576-448 448-448 448 200.576 448 448-200.576 448-448 448z",
           "M416 352c0 35.346-28.654 64-64 64s-64-28.654-64-64c0-35.346 28.654-64 64-64s64 28.654 64 64z",
           "M736 352c0 35.346-28.654 64-64 64s-64-28.654-64-64c0-35.346 28.654-64 64-64s64 28.654 64 64z",
@@ -29,7 +58,7 @@
         {}
       ],
       "properties": {
-        "order": 11,
+        "order": 14,
         "id": 8,
         "name": "happy",
         "prevSize": 32,
@@ -37,7 +66,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 0
+      "iconIdx": 1
     },
     {
       "icon": {
@@ -75,7 +104,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 1
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -113,7 +142,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 2
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -151,7 +180,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 3
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -189,7 +218,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 4
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -227,7 +256,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 5
+      "iconIdx": 6
     },
     {
       "icon": {
@@ -262,7 +291,7 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 6
+      "iconIdx": 7
     },
     {
       "icon": {
@@ -283,7 +312,7 @@
         {}
       ],
       "properties": {
-        "order": 6,
+        "order": 15,
         "id": 1,
         "name": "left-arrow",
         "prevSize": 32,
@@ -291,7 +320,36 @@
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 7
+      "iconIdx": 8
+    },
+    {
+      "icon": {
+        "paths": [
+          "M57.56 592.301l-1.598-0.35h685.214l-215.406 215.881c-10.548 10.54-16.334 24.817-16.334 39.803s5.786 29.163 16.334 39.728l33.517 33.534c10.54 10.54 24.584 16.367 39.561 16.367 14.985 0 29.038-5.786 39.578-16.326l369.248-369.214c10.581-10.581 16.367-24.676 16.326-39.67 0.042-15.077-5.744-29.18-16.326-39.745l-369.248-369.248c-10.54-10.531-24.584-16.326-39.578-16.326-14.977 0-29.022 5.803-39.561 16.326l-33.517 33.534c-10.548 10.523-16.334 24.576-16.334 39.561 0 14.977 5.786 28.289 16.334 38.82l217.837 217.088h-686.813c-30.862 0-56.795 26.599-56.795 57.444v47.429c0 30.845 26.699 55.363 57.56 55.363z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "left-arrow"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 17,
+        "id": 10,
+        "prevSize": 32,
+        "code": 59657,
+        "name": "right-arrow"
+      },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 9
     }
   ],
   "height": 1024,
@@ -307,22 +365,30 @@
     "fontPref": {
       "prefix": "icon-",
       "metadata": {
-        "fontFamily": "icomoon"
+        "fontFamily": "icomoon",
+        "majorVersion": 1,
+        "minorVersion": 0
       },
       "metrics": {
         "emSize": 1024,
         "baseline": 6.25,
         "whitespace": 50
       },
-      "embed": false
+      "embed": false,
+      "showMetadata": false,
+      "showMetrics": false,
+      "showSelector": false,
+      "showVersion": true
     },
     "imagePref": {
       "prefix": "icon-",
       "png": true,
       "useClassSelector": true,
       "color": 0,
-      "bgColor": 16777215
+      "bgColor": 16777215,
+      "classSelector": ".icon"
     },
-    "historySize": 50
+    "historySize": 50,
+    "gridSize": 16
   }
 }

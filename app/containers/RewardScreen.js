@@ -108,7 +108,7 @@ class RewardScreen extends Component {
 
 			<WordCard text={this.props.word.name} imageUrl={this.props.word.image}/>
 			<BalloonsAnimated/>
-			<BorderedButton onPress={this.props.onPress} title="przejdź dalej"/>
+			<BorderedButton icon="right-arrow" onPress={this.props.onPress} title="przejdź dalej"/>
 
 		</View>
 	}

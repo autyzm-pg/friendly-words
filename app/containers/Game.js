@@ -23,6 +23,11 @@ const GAME_STATES = {
 	summary: "summary"
 };
 
+export const Layout = ({children}) => (
+	<View style={styles.container}>
+		{children}
+	</View>
+)
 
 
 export default class Game extends Component {
@@ -76,10 +81,10 @@ export default class Game extends Component {
 	}
 
 	render() {
-		return <View style={styles.container}>
+		return <Layout>
 			<StatusBar hidden={true} />
 			{this.getActiveScreen()}
-		</View>;
+		</Layout>;
 	}
 };
 
