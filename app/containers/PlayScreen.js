@@ -1,37 +1,11 @@
 import React, {Component} from "react"
 import {View, StyleSheet, StatusBar, Text, Easing} from "react-native"
-import BorderedButton from "../components/ui/BorderedButton";
 import Options from "../components/game/Options";
 import Command from "../components/game/Command";
 import _ from "lodash";
 import {speak} from '../services/speaker';
+import ReadingCommandButton from "../components/game/ReadingCommandButton";
 
-class ReadingCommandButton extends Component {
-	constructor(props){
-		super(props);
-		this.toggleAvailability = this.toggleAvailability.bind(this);
-		this.readCommand = this.readCommand.bind(this);
-		this.state = {
-			isAvailable: true
-		}
-	}
-
-	toggleAvailability(){
-		this.setState({isAvailable: !this.state.isAvailable})
-	}
-
-	readCommand(){
-		const {onStart, onDone, command} = this.props;
-		speak(command, {
-			onStart: () => {onStart && onStart(); this.toggleAvailability()},
-			onDone: () => {onDone && onDone(); this.toggleAvailability()}
-		});
-	}
-
-	render(){
-		return <BorderedButton icon="sound" title="odtwórz polecenie" disabled={!this.state.isAvailable} onPress={()=>this.readCommand()}/>
-	}
-}
 export default class PlayScreen extends Component {
 	constructor(props){
 		super(props);
@@ -56,18 +30,26 @@ export default class PlayScreen extends Component {
 
 		return <View style={styles.playSceneContainer}>
 			<View style={styles.topbar}>
-				<BorderedButton icon="left-arrow" title="odtwórz polecenie" onPress={()=>{}}/>
-				<ReadingCommandButton command={this.readableCommand} />
+				<View style={styles.commandButtonPositioning}>
+					<ReadingCommandButton command={this.readableCommand} />
+				</View>
+				<Command text={this.props.command} word={this.props.correctWord}/>
+
 			</View>
-			<View style={{alignSelf: "stretch", flex: 1, justifyContent: 'center', alignItems:'center'}}>
-			<Command text={this.props.command} word={this.props.correctWord}/>
+			<View style={styles.optionsContainer}>
 			{ this.state.shouldShowOptions && <Options materials={materials}
-			                                                       onCorrect={this.props.onCorrectAnswer} showHintAfter={this.props.showHintAfter}/>}
+													   onCorrect={this.props.onCorrectAnswer}
+													   onIncorrect={this.props.onIncorrectAnswer}
+													   showHintAfter={this.props.showHintAfter}/>}
 			</View>
 		</View>;
 	}
 }
 
+const variables = {
+	horizontalGutter: 50,
+	verticalGutter: 10
+};
 const styles = StyleSheet.create({
 	playSceneContainer: {
 		flex: 1,
@@ -75,13 +57,27 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 
+	optionsContainer: {
+		alignSelf: "stretch",
+		flex: 1,
+		justifyContent: 'center',
+		alignItems:'center'
+	},
+
+	commandButtonPositioning: {
+		position: "absolute",
+		left: variables.horizontalGutter,
+		top: variables.verticalGutter/2
+	},
+
 	topbar: {
-		opacity: 0.8,
+		position: "relative",
 		flexDirection: "row",
 		alignSelf: "stretch",
-		justifyContent: "space-between",
-		paddingHorizontal: 50,
-		paddingVertical: 10
+		justifyContent: "center",
+		paddingHorizontal: variables.horizontalGutter,
+		paddingVertical: variables.verticalGutter,
+		marginTop: variables.horizontalGutter/2
 	}
 });
 

@@ -29,5 +29,4 @@ export default MainScreen = ({navigation}) =>
 				onPress={() => navigation.navigate("Game", {config})}/>)
 			.value()
 		}
-		{/*<BorderButton title="KLIKAJ" onPress={() => navigation.navigate("Game")}/>*/}
 	</Layout>

@@ -44,13 +44,17 @@ let FrycekTestConfig = {
 		{
 			name: "miś",
 			images: [images.mis1, images.mis2, images.mis3]
+		},
+		{
+			name: "tablet",
+			images: [images.tablet1, images.tablet2, images.tablet3]
 		}
 	],
 
 	hintType: ["fade"],
-	picturesNumber: 3,
+	picturesNumber: 4,
 	isTextForPicture: false,
-	isReadingCommands: true,
+	isReadingCommands: false,
 	showHintAfter: undefined,
 	commandText: "Gdzie jest {slowo}",
 	numberOfRepetitions: 3,

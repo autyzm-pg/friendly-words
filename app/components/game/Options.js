@@ -2,14 +2,14 @@ import React from "react";
 import {View, TouchableOpacity, StyleSheet, Text, UIManager} from "react-native";
 import _ from "lodash";
 import WordCard from "../ui/WordCard";
+import {Dimensions} from "react-native";
 
-export const Option = ({material, image, onPress}) => {
-	const wordCard = <WordCard isClickable text={material} imageUrl={image}/>;
+export const Option = ({material, image, onPress, cardSize}) => {
+	const wordCard = <WordCard cardSize={cardSize} isClickable text={material} imageUrl={image}/>;
 	return onPress
 		? <TouchableOpacity onPress={onPress}>{wordCard}</TouchableOpacity>
 		: <View>{wordCard}</View>
 };
-
 
 const FadingOption = (props) =>
 	<View style={{ opacity: props.shouldFade ? 0.2 : 1}}>
@@ -26,15 +26,16 @@ class CorretOption extends React.Component {
 	}
 }
 
-const FadeAwayHintOptions = ({materials, onCorrect, shouldShowHint}) =>
-	<View style={styles.container}>
+const FadeAwayHintOptions = ({materials, onCorrect, onIncorrect, shouldShowHint, cardSize}) => {
+	return <View style={styles.container}>
 		{_.map(materials, (material, idx) => {
-		return material.isCorrectAnswer
-			? <CorretOption key={idx} material={material.name} image={material.image} onPress={onCorrect} />
-			: <FadingOption key={idx} material={material.name} image={material.image} shouldFade={shouldShowHint}/>
-	}
-	)}
-	</View>;
+				return material.isCorrectAnswer
+					? <CorretOption key={idx} cardSize={cardSize} material={material.name} image={material.image} onPress={onCorrect}/>
+					: <FadingOption key={idx} cardSize={cardSize} material={material.name} image={material.image} shouldFade={shouldShowHint} onPress={onIncorrect}/>
+			}
+		)}
+	</View>
+};
 
 export default class Options extends React.Component{
 	constructor(props){
@@ -58,12 +59,23 @@ export default class Options extends React.Component{
 	}
 
 	showHint(){
+		this.props.onIncorrect && this.props.onIncorrect();
 		this.setState({shouldShowHint: true});
 	}
 
 	render(){
+		//from react-native documentation
+		/*  Although dimensions are available immediately, they may change (e.g due to device rotation) so any rendering
+			logic or styles that depend on these constants should try to call this function on every render,
+			rather than caching the value
+			*/
+		const width = Dimensions.get('window').width;
+		const cardSize =  ( width / this.props.materials.length ) - 80;
+
 		return <View>
-			<FadeAwayHintOptions materials={this.props.materials} onCorrect={this.props.onCorrect} shouldShowHint={this.state.shouldShowHint}/>
+			<FadeAwayHintOptions cardSize={cardSize} materials={this.props.materials}
+								 onCorrect={this.props.onCorrect} onIncorrect={this.showHint}
+								 shouldShowHint={this.state.shouldShowHint}/>
 		</View>;
 	}
 }

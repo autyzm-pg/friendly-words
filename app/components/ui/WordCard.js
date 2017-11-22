@@ -2,17 +2,17 @@ import React from "react";
 import {View, Image, StyleSheet, Dimensions} from "react-native";
 import CapriolaText from "../ui/CapriolaText";
 import colors from "../../assets/colours";
+import {width} from "../../services/deviceInfo";
 
-const {width, height} = Dimensions.get("window");
-//768 x 1024
-const cardSize = width >= 768 ? 250 : 150;
-export default WordCard = ({text, imageUrl, isClickable, rotate}) =>
+export default WordCard = ({text, imageUrl, isClickable, rotate, cardSize}) =>
 <View style={[styles.cardSpacing, isClickable && styles.dashedBorder]}>
-	<View style={styles.card}>
+	<View style={[styles.card, cardSize && {width: cardSize, height: cardSize}]}>
 		<Image style={styles.image} source={imageUrl}/>
 		{text && <CapriolaText style={styles.text}>{text}</CapriolaText>}
 	</View>
 </View>;
+
+const cardSize = width >= 768 ? 250 : 150;
 
 const styles = StyleSheet.create({
 	dashedBorder: {

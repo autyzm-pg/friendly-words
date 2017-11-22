@@ -20,8 +20,16 @@ class SummaryScreen extends Component {
 	}
 }
 
+class ReinforceScreen extends Component {
+	constructor(props){
+		super(props);
+	}
+
+
+}
 const GAME_STATES = {
 	reward: "reward",
+	reinforce: "reinforce",
 	play: "play",
 	summary: "summary"
 };
@@ -39,6 +47,7 @@ export default class Game extends Component {
 		super(props);
 		this.setNextLevel = this.setNextLevel.bind(this);
 		this.showReward = this.showReward.bind(this);
+		this.repeatLevel = this.repeatLevel.bind(this);
 		this.findCorrectAnswer = this.findCorrectAnswer.bind(this);
 		this.state = {gameState: GAME_STATES.play, words: this.props.levels.next().value}
 	}
@@ -59,30 +68,40 @@ export default class Game extends Component {
 		return _.find(this.state.words, 'isCorrectAnswer');
 	}
 
+	repeatLevel(){
+		this.setState({gameState: GAME_STATES.play})
+	}
+
 	getActiveScreen(){
 		const correctWord = this.findCorrectAnswer();
 		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
-		switch (this.state.gameState) {
-			case GAME_STATES.reward:
-				return <RewardScreen word={correctWord}
-				                     onPress={this.setNextLevel}
-				                     textReward={_.sample(this.props.textRewards)}
-									shouldReadReward={this.props.shouldReadReward}/>;
-			case GAME_STATES.play:
-				return <PlayScreen command={this.props.command}
-				                   words={this.state.words}
-				                   correctWord={correctWord.name}
-				                   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
-				                   shouldReadCommand={this.props.shouldReadCommand}
-				                   onCorrectAnswer={this.showReward}
-				                   showHintAfter={this.props.showHintAfter}
+        switch (this.state.gameState) {
+            case GAME_STATES.reward:
+                return <RewardScreen word={correctWord}
+									 onPress={this.setNextLevel}
+									 onPrevPress={this.repeatLevel}
+									 textReward={_.sample(this.props.textRewards)}
+									 shouldReadReward={this.props.shouldReadReward}/>;
+                break;
+            case GAME_STATES.reinforce:
+                return <ReinforceScreen />;
+                break;
+            case GAME_STATES.play:
+                return <PlayScreen command={this.props.command}
+								   words={this.state.words}
+								   correctWord={correctWord.name}
+								   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
+								   shouldReadCommand={this.props.shouldReadCommand}
+								   onCorrectAnswer={this.showReward}
+								   onIncorrectAnswer={this.showReinforce}
+								   showHintAfter={this.props.showHintAfter}
 				/>;
-				break;
-			case GAME_STATES.summary:
-				return <SummaryScreen onAccept={this.props.goToMainScreen}/>;
-				break;
-		}
+                break;
+            case GAME_STATES.summary:
+                return <SummaryScreen onAccept={this.props.goToMainScreen}/>;
+                break;
+        }
 	}
 
 	render() {
