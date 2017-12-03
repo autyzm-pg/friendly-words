@@ -1,8 +1,7 @@
 import React, {Component} from "react"
 import {View, Button, StyleSheet, StatusBar, Animated, Text, Easing, LayoutAnimation} from "react-native"
-import RewardScreen from "../containers/RewardScreen";
+import RewardScreen, {ReinforcingScreen} from "../containers/RewardScreen";
 import _ from "lodash";
-import CapriolaText from "../components/ui/CapriolaText";
 import PlayScreen from "../containers/PlayScreen";
 import { LinearGradient } from 'expo';
 import Colours from "../assets/colours";
@@ -20,13 +19,6 @@ class SummaryScreen extends Component {
 	}
 }
 
-class ReinforceScreen extends Component {
-	constructor(props){
-		super(props);
-	}
-
-
-}
 const GAME_STATES = {
 	reward: "reward",
 	reinforce: "reinforce",
@@ -64,12 +56,22 @@ export default class Game extends Component {
 		this.setState({gameState: GAME_STATES.reward})
 	}
 
+	showReinforce(){
+		this.setState({gameState: GAME_STATES.reinforce})
+	}
+
 	findCorrectAnswer(){
 		return _.find(this.state.words, 'isCorrectAnswer');
 	}
 
 	repeatLevel(){
 		this.setState({gameState: GAME_STATES.play})
+	}
+
+	onLevelFinished = (incorrectAnswers) => {
+		incorrectAnswers > 0
+			? this.showReinforce()
+			: this.showReward();
 	}
 
 	getActiveScreen(){
@@ -85,7 +87,11 @@ export default class Game extends Component {
 									 shouldReadReward={this.props.shouldReadReward}/>;
                 break;
             case GAME_STATES.reinforce:
-                return <ReinforceScreen />;
+                return <ReinforcingScreen word={correctWord}
+										onPress={this.setNextLevel}
+										onPrevPress={this.repeatLevel}
+										textReward={_.sample(this.props.textRewards)}
+										shouldReadReward={this.props.shouldReadReward}/>;
                 break;
             case GAME_STATES.play:
                 return <PlayScreen command={this.props.command}
@@ -93,7 +99,7 @@ export default class Game extends Component {
 								   correctWord={correctWord.name}
 								   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
 								   shouldReadCommand={this.props.shouldReadCommand}
-								   onCorrectAnswer={this.showReward}
+								   onCorrectAnswer={this.onLevelFinished}
 								   onIncorrectAnswer={this.showReinforce}
 								   showHintAfter={this.props.showHintAfter}
 				/>;

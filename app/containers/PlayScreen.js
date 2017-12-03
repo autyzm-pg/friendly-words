@@ -12,7 +12,7 @@ export default class PlayScreen extends Component {
 		this.showOptions = this.showOptions.bind(this);
 
 		this.readableCommand = _.replace(this.props.command, '{slowo}', this.props.correctWord);
-		this.state = {shouldShowOptions: false}
+		this.state = {shouldShowOptions: false, incorrectAnswers: 0}
 	}
 
 	showOptions() {
@@ -38,8 +38,8 @@ export default class PlayScreen extends Component {
 			</View>
 			<View style={styles.optionsContainer}>
 			{ this.state.shouldShowOptions && <Options materials={materials}
-													   onCorrect={this.props.onCorrectAnswer}
-													   onIncorrect={this.props.onIncorrectAnswer}
+													   onCorrect={() => this.props.onCorrectAnswer(this.state.incorrectAnswers)}
+													   onIncorrect={()=> this.setState({incorrectAnswers: this.state.incorrectAnswers+1})}
 													   showHintAfter={this.props.showHintAfter}/>}
 			</View>
 		</View>;

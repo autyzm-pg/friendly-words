@@ -48,7 +48,7 @@ export default class BalloonsAnimated extends Component {
     }
 
     render() {
-        return <View style={style.animatedContainer}>
+        return <View style={style.animatedContainer} pointerEvents="none">
             {_.map(_.range(_.random(28, 38)), idx => {
                 let balloon = _.sample(this.balloons);
                 let RandomBalloon = balloon.component;
