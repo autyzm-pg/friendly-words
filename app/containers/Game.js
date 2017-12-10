@@ -14,7 +14,7 @@ class SummaryScreen extends Component {
 
 	render(){
 		return <View>
-			<Button title="Zacznij od nowa" onPress={this.props.onAccept}/>
+			<Button title="Play again" onPress={this.props.onAccept}/>
 		</View>
 	}
 }

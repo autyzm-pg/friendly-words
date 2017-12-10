@@ -1,5 +1,5 @@
 import {Speech} from 'expo';
 
-const defauultOptions = {language: "pl"};
+const defauultOptions = {language: "en"};
 
 export const speak = (text, options={}) => Speech.speak(text, {...defauultOptions, ...options});

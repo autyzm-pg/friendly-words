@@ -37,9 +37,9 @@ export class ReinforcingScreen extends Component {
             <WordCard imageUrl={this.props.word.image} cardSize={width/3}/>
 
             <View style={styles.topbar}>
-                <BorderedButton icon="left-arrow" color="red" title="odtwórz polecenie"
+                <BorderedButton icon="left-arrow" color="red" title="read command"
                                 onPress={this.props.onPrevPress}/>
-                <BorderedButton icon="right-arrow" color="green" onPress={this.props.onPress} title="przejdź dalej"/>
+                <BorderedButton icon="right-arrow" color="green" onPress={this.props.onPress} title="go next"/>
             </View>
         </View>
     }

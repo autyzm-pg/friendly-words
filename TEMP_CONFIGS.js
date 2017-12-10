@@ -3,19 +3,19 @@ import images from "./TEMP_IMAGES"
 const CONFIG2 = {
 	materials: [
 		{
-			name: "piłka",
+			name: "ball",
 			images: [images.pilka1, images.pilka2, images.pilka3]
 		},
 		{
-			name: "kotek",
+			name: "cat",
 			images: [images.cat1, images.cat2]
 		},
 		{
-			name: "piesek",
+			name: "dog",
 			images: [images.dog1, images.dog2, images.dog3]
 		},
 		{
-			name: "lalka",
+			name: "doll",
 			images: [images.doll]
 		}
 	],
@@ -25,24 +25,24 @@ const CONFIG2 = {
 	isTextForPicture: false,
 	isReadingCommands: true,
 	showHintAfter: 10,
-	commandText: "Pokaż gdzie jest {slowo}",
+	commandText: "Where is {slowo}?",
 	numberOfRepetitions: 2,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
+	textRewards: ["Good", "Keep going!", "Yes"],
 	isReadingRewards: false,
 };
 
-let FrycekTestConfig = {
+let TTStest = {
 	materials: [
 		{
-			name: "but",
+			name: "shoe",
 			images: [images.but1, images.but2, images.but3]
 		},
 		{
-			name: "łycha",
+			name: "spoon",
 			images: [images.lycha1, images.lycha2, images.lycha3]
 		},
 		{
-			name: "miś",
+			name: "teddy bear",
 			images: [images.mis1, images.mis2, images.mis3]
 		},
 		{
@@ -54,80 +54,80 @@ let FrycekTestConfig = {
 	hintType: ["fade"],
 	picturesNumber: 4,
 	isTextForPicture: false,
-	isReadingCommands: false,
+	isReadingCommands: true,
 	showHintAfter: undefined,
-	commandText: "Gdzie jest {slowo}",
+	commandText: "Where is {slowo}",
 	numberOfRepetitions: 3,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
-	isReadingRewards: false,
+	textRewards: ["Good", "Super", "Keep going"],
+	isReadingRewards: true,
 };
 
-let FrycekConfig = {
+let TextUnderCardsTest = {
 	materials: [
 		{
 			name: "tablet",
 			images: [images.tablet1, images.tablet2, images.tablet3]
 		},
 		{
-			name: "łóżko",
+			name: "bed",
 			images: [images.lozko1, images.lozko2, images.lozko3]
 		},
 		{
-			name: "baja",
+			name: "book",
 			images: [images.baja1, images.baja2, images.baja3]
 		}
 	],
 
 	hintType: ["fade"],
 	picturesNumber: 3,
-	isTextForPicture: false,
-	isReadingCommands: true,
+	isTextForPicture: true,
+	isReadingCommands: false,
 	showHintAfter: 12,
-	commandText: "Gdzie jest {slowo}",
+	commandText: "{slowo}",
 	numberOfRepetitions: 3,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
+	textRewards: ["Good!"],
 	isReadingRewards: false,
 };
 
-let KacperConfig = {
+let ManyRepetitionsTest = {
 	materials: [
 		{
-			name: "miś",
+			name: "teddy bear",
 			images: [images.mis2, images.mis1, images.mis3]
 		},
 		{
-			name: "auto",
+			name: "car",
 			images: [images.auto1, images.auto2, images.auto3]
 		},
 		{
-			name: "kredka",
+			name: "crayon",
 			images: [images.kredka3, images.kredka1, images.kredka2]
 		}
 	],
 
 	hintType: ["fade"],
-	picturesNumber: 3,
+	picturesNumber: 2,
 	isTextForPicture: false,
 	isReadingCommands: true,
-	showHintAfter: 12,
-	commandText: "Gdzie jest {slowo}",
-	numberOfRepetitions: 3,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
+	showHintAfter: 3,
+	commandText: "{slowo}",
+	numberOfRepetitions: 10,
+	textRewards: ["Good job!"],
 	isReadingRewards: false,
 };
 
-let AdamConfig = {
+let CheckWordLearningTest = {
 	materials: [
 		{
-			name: "małpa",
+			name: "monkey",
 			images: [images.malpa1, images.malpa2, images.malpa3]
 		},
 		{
-			name: "słońce",
+			name: "sun",
 			images: [images.slonce3, images.slonce2, images.slonce1]
 		},
 		{
-			name: "parasol",
+			name: "umbrella",
 			images: [images.parasol1, images.parasol2, images.parasol3]
 		}
 	],
@@ -136,11 +136,11 @@ let AdamConfig = {
 	picturesNumber: 3,
 	isTextForPicture: false,
 	isReadingCommands: true,
-	showHintAfter: 12,
-	commandText: "Gdzie jest {slowo}",
+	showHintAfter: 3,
+	commandText: "Where is {slowo}",
 	numberOfRepetitions: 3,
-	textRewards: ["Super", "Dobrze Ci idzie!", "Tak"],
-	isReadingRewards: false,
+	textRewards: ["Good"],
+	isReadingRewards: true,
 };
 
-export {FrycekConfig, FrycekTestConfig, AdamConfig, KacperConfig}
+export {TextUnderCardsTest, TTStest, CheckWordLearningTest, ManyRepetitionsTest}

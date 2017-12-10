@@ -22,7 +22,7 @@ const styles = {
 export default MainScreen = ({navigation}) =>
 	<Layout style={styles.container}>
 		<StatusBar hidden={true}/>
-		<CapriolaText style={styles.commandText}>Wybierz konfiguracje</CapriolaText>
+		<CapriolaText style={styles.commandText}>Testing different game configurations screen:</CapriolaText>
 		{_.chain(allConfigs)
 			.toPairs()
 			.map(([name, config]) => <Button title={name} key={name}
