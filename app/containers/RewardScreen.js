@@ -14,8 +14,12 @@ const withReward = WrappedComponent =>
     class extends Component {
         componentDidMount() {
             this.props.shouldReadReward
-                ? speak(`${this.props.textReward} ${this.props.word.name}`)
+                ? this.readReward()
                 : _.noop();
+        }
+
+        readReward(){
+            speak(this.props.textReward)
         }
 
         render() {
@@ -27,6 +31,10 @@ const withReward = WrappedComponent =>
     };
 
 export class ReinforcingScreen extends Component {
+
+    componentDidMount(){
+        speak(this.props.word.name)
+    }
 
     render() {
         return <View style={styles.container}>

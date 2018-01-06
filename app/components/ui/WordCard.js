@@ -2,37 +2,30 @@ import React from "react";
 import {View, Image, StyleSheet, Dimensions} from "react-native";
 import CapriolaText from "../ui/CapriolaText";
 import colors from "../../assets/colours";
-import {width} from "../../services/deviceInfo";
 
 export default WordCard = ({text, imageUrl, isClickable, rotate, cardSize}) =>
-<View style={[styles.cardSpacing, isClickable && styles.dashedBorder]}>
-	<View style={[styles.card, cardSize && {width: cardSize, height: cardSize}]}>
+<View style={[styles.dashedBorder, cardSize && {width: cardSize, height: cardSize}]}>
+	<View style={styles.card}>
 		<Image style={styles.image} source={imageUrl}/>
 		{text && <CapriolaText style={styles.text}>{text}</CapriolaText>}
 	</View>
 </View>;
 
-const cardSize = width >= 768 ? 250 : 150;
 
 const styles = StyleSheet.create({
 	dashedBorder: {
-		padding: 10,
+		padding: 5,
 		borderStyle: "dashed",
-		borderWidth: 3,
+		borderWidth: 2,
 		borderRadius: 20,
-		borderColor: colors.tulipTree,
+		borderColor: colors.tulipTree
 	},
-
-	cardSpacing: {
-		margin: 10
-	},
-
 	card: {
 		backgroundColor: '#fff',
-		borderRadius: 10,
-		padding: 10,
-		height: cardSize,
-		width: cardSize,
+		borderRadius: 16,
+		flex: 1,
+		padding: 4,
+		overflow: 'hidden'
 	},
 
 	image: {
@@ -43,8 +36,8 @@ const styles = StyleSheet.create({
 	},
 
 	text: {
-		margin: 10,
-		fontSize: 20,
+		margin: 4,
+		fontSize: 16,
 		color: '#212223',
 		textAlign: "center"
 	}

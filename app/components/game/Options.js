@@ -2,7 +2,7 @@ import React from "react";
 import {View, TouchableOpacity, StyleSheet, Text, UIManager} from "react-native";
 import _ from "lodash";
 import WordCard from "../ui/WordCard";
-import {Dimensions} from "react-native";
+import {Dimensions, PixelRatio} from "react-native";
 
 export const Option = ({material, image, onPress, cardSize}) => {
 	const wordCard = <WordCard cardSize={cardSize} isClickable text={material} imageUrl={image}/>;
@@ -48,6 +48,7 @@ export default class Options extends React.Component{
 
 	componentWillUnmount(){
 		clearTimeout(this.idk);
+
 	}
 
 	componentDidMount(){
@@ -69,14 +70,10 @@ export default class Options extends React.Component{
 			logic or styles that depend on these constants should try to call this function on every render,
 			rather than caching the value
 			*/
-		const width = Dimensions.get('window').width;
-		const cardSize =  ( width / this.props.materials.length ) - 80;
 
-		return <View>
-			<FadeAwayHintOptions cardSize={cardSize} materials={this.props.materials}
+		return <FadeAwayHintOptions cardSize={this.props.cardSize} materials={this.props.materials}
 								 onCorrect={this.props.onCorrect} onIncorrect={this.showHint}
 								 shouldShowHint={this.state.shouldShowHint}/>
-		</View>;
 	}
 }
 
@@ -84,6 +81,9 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		flexWrap: "wrap",
-		justifyContent: "center"
+		flex: 1,
+        alignSelf: "stretch",
+        justifyContent: "space-around",
+		alignItems: "center",
 	}
 });
