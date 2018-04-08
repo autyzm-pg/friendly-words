@@ -13,6 +13,7 @@ export default Command = ({text, word, style}) =>
 const styles = StyleSheet.create({
 	text: {
 		fontSize: isPhone() ? 30 : 50,
-		color: colors.white
+		color: colors.white,
+		backgroundColor: "transparent"
 	}
 });

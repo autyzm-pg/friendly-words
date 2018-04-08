@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {View, StyleSheet, StatusBar, Text, Easing} from "react-native"
+import {View, StyleSheet, StatusBar, Text, Easing, Image} from "react-native"
 import Options from "../components/game/Options";
 import Command from "../components/game/Command";
 import _ from "lodash";
@@ -25,25 +25,42 @@ export default class PlayScreen extends Component {
 			: _.delay(this.showOptions, 500);
 	}
 
-	render(){
-		const materials = this.props.shouldShowPicturesLabels  ? this.props.words : _.map(this.props.words, word => _.omit(word, 'name'));
+  render() {
+    const materials = this.props.shouldShowPicturesLabels ? this.props.words : _.map(this.props.words, word => _.omit(word, 'name'));
+    //<Image source={require('../svg/triangles.png')}/>
 
-		return <View style={styles.playSceneContainer}>
-			<View style={styles.topbar}>
-				<View style={styles.commandButtonPositioning}>
-					<ReadingCommandButton command={this.readableCommand} />
-				</View>
-				<Command text={this.props.command} word={this.props.correctWord}/>
+    return <View style={styles.playSceneContainer}>
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        <Image resizeMode="contain" style={{
+          flex: 1,
+          alignSelf: 'stretch',
+          width: undefined,
+          height: undefined
+        }} source={require('../triangles.png')}/>
+      </View>
+      <View style={styles.topbar}>
+        <View style={styles.commandButtonPositioning}>
+          <ReadingCommandButton command={this.readableCommand}/>
+        </View>
+        <Command text={this.props.command} word={this.props.correctWord}/>
 
-			</View>
-			<View style={styles.optionsContainer}>
-			{ this.state.shouldShowOptions && <Options materials={materials}
-													   onCorrect={() => this.props.onCorrectAnswer(this.state.incorrectAnswers)}
-													   onIncorrect={()=> this.setState({incorrectAnswers: this.state.incorrectAnswers+1})}
-													   showHintAfter={this.props.showHintAfter}/>}
-			</View>
-		</View>;
-	}
+      </View>
+      <View style={styles.optionsContainer}>
+        {this.state.shouldShowOptions && <Options materials={materials}
+                                                  onCorrect={() => this.props.onCorrectAnswer(this.state.incorrectAnswers)}
+                                                  onIncorrect={() => this.setState({incorrectAnswers: this.state.incorrectAnswers + 1})}
+                                                  showHintAfter={this.props.showHintAfter}/>}
+      </View>
+    </View>;
+  }
 }
 
 const variables = {
