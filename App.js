@@ -7,6 +7,7 @@ import {Font, Asset, AppLoading} from "expo";
 import {FrycekConfig, FrycekTestConfig, AdamConfig, KacperConfig} from "./TEMP_CONFIGS"
 import MainScreen from "./app/containers/MainScreen";
 import images from "./TEMP_IMAGES";
+import {readActiveConfig} from "./app/services/db/configs"
 
 function prepareLevels(materials, repetitions, optionsNumber) {
 	let levels = _.shuffle(_.flatMap(materials, material =>
@@ -79,6 +80,10 @@ export default class App extends React.Component {
 			...loadingImages,
 			...loadingFonts
 		])
+
+		const activeConfig = await readActiveConfig()
+		console.log("Active config: ", activeConfig);
+
 		console.log("Loaded all assets")
 	}
 
