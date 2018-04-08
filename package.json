@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "appcenter-link-scripts": "^1.4.0",
     "jest-expo": "~25.0.0",
     "react-native-scripts": "0.0.40",
     "react-test-renderer": "16.0.0-alpha.12"
@@ -19,6 +20,9 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "appcenter": "^1.4.0",
+    "appcenter-analytics": "^1.4.0",
+    "appcenter-crashes": "^1.4.0",
     "expo": "^25.0.0",
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.4",
@@ -26,6 +30,7 @@
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-fit-image": "^1.5.2",
+    "react-native-fs": "^2.9.11",
     "react-native-responsive-ui": "^1.1.1",
     "react-navigation": "^1.0.0-beta.11",
     "react-timer-mixin": "^0.13.3"
