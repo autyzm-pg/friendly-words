@@ -26,6 +26,8 @@
     "expo": "^25.0.0",
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "ramda": "^0.25.0",
     "prop-types": "^15.6.1",
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
