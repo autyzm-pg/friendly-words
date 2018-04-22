@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Button, StatusBar} from 'react-native';
 import {Layout} from "./Game";
 import CapriolaText from "../components/ui/CapriolaText";
-import BorderButton from "../components/ui/BorderedButton";
+import BorderButton from "../components/ui/borderedButton/BorderedButton";
 import _ from "lodash";
 
 import * as allConfigs from "../../TEMP_CONFIGS";

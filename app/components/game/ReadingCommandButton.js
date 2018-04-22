@@ -1,4 +1,4 @@
-import BorderedButton from "../ui/BorderedButton";
+import BorderedButton from "../ui/borderedButton/BorderedButton";
 import React, {Component} from "react";
 import {speak} from '../../services/speaker';
 

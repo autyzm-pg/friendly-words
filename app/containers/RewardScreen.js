@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import {View, Text, Dimensions, StyleSheet,} from "react-native";
-import WordCard from "../components/ui/WordCard";
+import WordCard from "../components/ui/wordCard/WordCard";
 import CapriolaText from "../components/ui/CapriolaText"
 import _ from "lodash";
 import {speak} from '../services/speaker';
-import BorderedButton from "../components/ui/BorderedButton";
+import BorderedButton from "../components/ui/borderedButton/BorderedButton";
 import colors from "../assets/colours";
 import Icon from "../components/ui/Icon";
 import {width} from "../services/deviceInfo";

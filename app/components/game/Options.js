@@ -1,7 +1,7 @@
 import React from "react";
 import {View, TouchableOpacity, StyleSheet, Text, UIManager} from "react-native";
 import _ from "lodash";
-import WordCard from "../ui/WordCard";
+import WordCard from "../ui/wordCard/WordCard";
 import {Dimensions, PixelRatio} from "react-native";
 
 export const Option = ({material, image, onPress, cardSize}) => {

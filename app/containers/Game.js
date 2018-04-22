@@ -120,7 +120,7 @@ export default class Game extends Component {
 
 const styles = StyleSheet.create({
  container: {
- 	backgroundColor: Colours.easternBlue,
+ 	backgroundColor: Colours.dodgerBlue,
 	 flex: 1
  }
 });
