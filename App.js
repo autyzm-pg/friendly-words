@@ -17,7 +17,7 @@ const configFromDbToGameScreen = ({config}) => ({
     isTextForPicture: config.showPicturesLabels,
     materials: config.materials.map(material => ({
         name: material.word.name,
-        images: material.images.map(image => ({uri: image})),
+        images: material.images,
         isInTestMode: material.isInTestMode,
         isInLearningMode: material.isInLearningMode,
     })),
