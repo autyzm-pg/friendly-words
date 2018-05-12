@@ -4,7 +4,7 @@ import {View, StyleSheet} from "react-native"
 import Options from "./Options";
 import _ from "lodash";
 
-const CARDS_MARGIN = 12;
+const CARDS_MARGIN = 50;
 const MAX_CARD_WIDTH = 500;
 export default class OptionsContainer extends Component {
     constructor(props){
@@ -15,7 +15,7 @@ export default class OptionsContainer extends Component {
 
     onLayout(e) {
         const containerWidth = e.nativeEvent.layout.width,
-            cardSize = Math.floor(containerWidth / this.props.words.length) - CARDS_MARGIN
+            cardSize = Math.floor(containerWidth / this.props.words.length) - CARDS_MARGIN;
         this.setState({cardSize: cardSize > MAX_CARD_WIDTH ? MAX_CARD_WIDTH : cardSize })
     }
 

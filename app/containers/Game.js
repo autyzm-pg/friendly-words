@@ -3,9 +3,7 @@ import {View, Button, StyleSheet, StatusBar, Animated, Text, Easing, LayoutAnima
 import RewardScreen, {ReinforcingScreen} from "../containers/RewardScreen";
 import _ from "lodash";
 import PlayScreen from "../containers/PlayScreen";
-import { LinearGradient } from 'expo';
-import Colours from "../assets/colours";
-import { NavigationActions } from 'react-navigation';
+import {FullBackground} from "../components/ui/FullBackground";
 
 class SummaryScreen extends Component {
 	constructor(props){
@@ -26,12 +24,10 @@ const GAME_STATES = {
 	summary: "summary"
 };
 
-export const Layout = ({children}) => (
-	<View style={styles.container}>
+export const Layout = ({children}) =>
+	<FullBackground backgroundSrc={require("../assets/images/triangles.png")}>
 		{children}
-	</View>
-)
-
+	</FullBackground>;
 
 export default class Game extends Component {
 
@@ -117,13 +113,5 @@ export default class Game extends Component {
 		</Layout>;
 	}
 };
-
-const styles = StyleSheet.create({
- container: {
- 	backgroundColor: Colours.dodgerBlue,
-	 flex: 1
- }
-});
-
 
 
