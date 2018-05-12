@@ -1,14 +1,12 @@
-import React, {Component} from "react";
-import {View, Text, Dimensions, StyleSheet,} from "react-native";
+import React, {Component, Fragment} from "react";
+import {View, StyleSheet,} from "react-native";
 import WordCard from "../components/ui/wordCard/WordCard";
-import CapriolaText from "../components/ui/CapriolaText"
 import _ from "lodash";
 import {speak} from '../services/speaker';
 import BorderedButton from "../components/ui/borderedButton/BorderedButton";
-import colors from "../assets/colours";
-import Icon from "../components/ui/Icon";
 import {width} from "../services/deviceInfo";
 import AnimatedBalloons from "../components/animations/AnimatedBalloons";
+import {Header} from "../components/ui/Header";
 
 const withReward = WrappedComponent =>
     class extends Component {
@@ -23,10 +21,10 @@ const withReward = WrappedComponent =>
         }
 
         render() {
-            return <View style={styles.container}>
+            return <Fragment>
                 <WrappedComponent {...this.props} />
                 <AnimatedBalloons/>
-            </View>
+            </Fragment>
         }
     };
 
@@ -37,36 +35,20 @@ export class ReinforcingScreen extends Component {
     }
 
     render() {
-        return <View style={styles.container}>
-
-            <Icon style={{opacity: 0.8}} size={70} color={"white"} name={`happy-${_.random(1, 5)}`}/>
-            <CapriolaText style={styles.text}>{this.props.word.name}</CapriolaText>
-
-            <WordCard imageUrl={this.props.word.image} cardSize={width/3}/>
-
+        return <Fragment>
+           <Header>{this.props.word.name}</Header>
+            <WordCard imageUrl={this.props.word.image} cardSize={width/2.5} noBorder={true}/>
             <View style={styles.topbar}>
-                <BorderedButton icon="left-arrow" color="red" title="read command"
-                                onPress={this.props.onPrevPress}/>
-                <BorderedButton icon="right-arrow" color="green" onPress={this.props.onPress} title="go next"/>
+                <BorderedButton icon="left-arrow" color="#E37346" onPress={this.props.onPrevPress}/>
+                <BorderedButton icon="right-arrow" color="#53AD4B" onPress={this.props.onPress}/>
             </View>
-        </View>
+        </Fragment>
     }
 }
 
 export default RewardScreen = withReward(ReinforcingScreen);
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        flex: 1
-    },
-
-    text: {
-        fontSize: 40,
-        color: colors.white
-    },
 
     topbar: {
         flexDirection: "row",

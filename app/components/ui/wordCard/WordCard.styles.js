@@ -15,8 +15,11 @@ export const DashedBorder = glamorous.view({
     borderRadius: 30,
     borderWidth: 4,
     borderStyle: "dashed",
-    borderColor: colors.tulipTree
   },
+  ({noBorder = false}) => (
+    {
+      borderColor: noBorder ? 'transparent' : colors.tulipTree
+    }),
   ({size = 100}) => (
     {
       width: size,

@@ -1,18 +1,7 @@
 import React from "react";
-import {Text, View, StyleSheet} from "react-native";
 import _ from "lodash";
-import CapriolaText from "../ui/CapriolaText";
-import colors from "../../assets/colours";
-import {isPhone} from "../../services/deviceInfo";
+import {Header} from "../ui/Header";
 
-export default Command = ({text, word, style}) =>
-	<View style={styles.container}>
-		<CapriolaText style={styles.text}>{_.replace(text, '{slowo}', word)}</CapriolaText>
-	</View>;
+export default Command = ({text, word}) =>
+		<Header>{_.replace(text, '{slowo}', word)}</Header>
 
-const styles = StyleSheet.create({
-	text: {
-		fontSize: isPhone() ? 35 : 50,
-		color: colors.white
-	}
-});
