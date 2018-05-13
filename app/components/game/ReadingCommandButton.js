@@ -25,6 +25,6 @@ export default class ReadingCommandButton extends Component {
 	}
 
 	render(){
-		return <BorderedButton icon="sound" title="odtwórz polecenie" disabled={!this.state.isAvailable} onPress={this.readCommand}/>
+		return <BorderedButton icon="sound" disabled={!this.state.isAvailable} onPress={this.readCommand}/>
 	}
 }

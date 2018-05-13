@@ -6,7 +6,7 @@ export const Card = glamorous.view({
   backgroundColor: colors.white,
   borderRadius: 20,
   flex: 1,
-  padding: 4,
+  padding: 12,
   overflow: 'hidden'
 });
 
