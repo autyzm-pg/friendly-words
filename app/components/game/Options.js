@@ -39,7 +39,9 @@ const FadeAwayHintOptions = ({materials, onCorrect, onIncorrect, shouldShowHint,
   </View>
 };
 
-export default class Options extends React.Component {
+const seconds = (duration) => duration * 1000;
+
+export default class   Options extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,17 +55,26 @@ export default class Options extends React.Component {
 
   }
 
+  componentDidUpdate(){
+    if(this.idk && this.props.timeForAnswer){
+      clearTimeout(this.idk);
+      this.idk = setTimeout(this.props.onIncorrect, seconds(this.props.timeForAnswer))
+    }
+  }
+
   componentDidMount() {
     if (this.props.showHintAfter) {
-      this.idk = setTimeout(() => {
-        this.showHint()
-      }, this.props.showHintAfter * 1000);
+      this.idk = setTimeout(this.showHint, seconds(this.props.showHintAfter));
+    }
+
+    if(this.props.timeForAnswer){
+      this.idk = setTimeout(this.props.onIncorrect, seconds(this.props.timeForAnswer))
     }
   }
 
   showHint() {
     this.props.onIncorrect && this.props.onIncorrect();
-    this.setState({shouldShowHint: true});
+    this.setState({shouldShowHint: !!this.props.showHintAfter});
   }
 
   render() {

@@ -39,17 +39,25 @@ function prepareLevels(materials, repetitions, optionsNumber) {
 const GameScreen = ({navigation}) => {
     return (
         <ConfigConsumer>
-            {config => (
-                <Game levels={prepareLevels(config.materials, config.numberOfRepetitions, config.picturesNumber)}
-                      command={config.commandText}
-                      textRewards={config.textRewards}
-                      shouldShowPicturesLabels={config.isTextForPicture}
-                      shouldReadReward={config.isReadingRewards}
-                      shouldReadCommand={config.isReadingCommands}
-                      showHintAfter={config.showHintAfter}
-                      goToMainScreen={() => navigation.goBack()}
+            { (config, mode) => {
+                const isTestMode = true //mode === ModeTypes.test
+                const materials = isTestMode ? _.filter(config.materials, 'isInTestMode') : config.materials,
+                    repetitions = isTestMode ? config.testConfig.numberOfRepetitions : config.numberOfRepetitions;
+
+                return <Game
+                    levels={prepareLevels(materials, repetitions, config.picturesNumber)}
+                    command={config.commandText}
+                    textRewards={config.textRewards}
+                    shouldShowPicturesLabels={config.isTextForPicture}
+                    shouldReadReward={config.isReadingRewards}
+                    shouldReadCommand={config.isReadingCommands}
+                    showHintAfter={config.showHintAfter}
+                    timeForAnswer={config.testConfig.timeForAnswer}
+                    isTestMode={isTestMode}
+                    goToMainScreen={() => navigation.goBack()}
                 />
-            )}
+            }
+            }
         </ConfigConsumer>
     )
 };

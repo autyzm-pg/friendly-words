@@ -95,9 +95,10 @@ export default class Game extends Component {
 								   correctWord={correctWord.name}
 								   shouldShowPicturesLabels={this.props.shouldShowPicturesLabels}
 								   shouldReadCommand={this.props.shouldReadCommand}
-								   onCorrectAnswer={this.onLevelFinished}
-								   onIncorrectAnswer={this.showReinforce}
-								   showHintAfter={this.props.showHintAfter}
+								   onCorrectAnswer={this.props.isTestMode ? this.setNextLevel : this.onLevelFinished}
+								   onIncorrectAnswer={this.props.isTestMode ? this.setNextLevel : _.noop()}
+								   showHintAfter={!this.props.isTestMode ? this.props.showHintAfter : null}
+								   timeForAnswer={this.props.isTestMode ? this.props.timeForAnswer : null}
 				/>;
                 break;
             case GAME_STATES.summary:

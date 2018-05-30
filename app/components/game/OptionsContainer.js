@@ -24,6 +24,7 @@ export default class OptionsContainer extends Component {
         const materials = shouldShowPicturesLabels ? words : _.map(words, word => _.omit(word, 'name')),
             style = [ContainerStyles.fullSizeContainer, ContainerStyles.centeredContainer, styles.optionsContainer];
 
+        console.log('optionsContainer', rest)
         return <View onLayout={this.onLayout} style={style}>
             { shouldShowOptions &&
             <Options cardSize={this.state.cardSize} materials={materials} {...rest} /> }

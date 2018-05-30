@@ -10,18 +10,28 @@ export default class PlayScreen extends Component {
   constructor(props) {
     super(props);
     this.showOptions = this.showOptions.bind(this)
-    this.readableCommand = _.replace(this.props.command, '{slowo}', this.props.correctWord)
+    this.readableCommand = () => _.replace(this.props.command, '{slowo}', this.props.correctWord)
     this.state = {shouldShowOptions: false, incorrectAnswers: 0}
+  }
+
+  readCommandAndShowOptions = () => {
+      this.props.shouldReadCommand
+          ? speak(this.readableCommand(), {onDone: this.showOptions})
+          : _.delay(this.showOptions, 500)
   }
 
   showOptions() {
     this.setState({shouldShowOptions: true})
   }
 
-  componentWillMount() {
-    this.props.shouldReadCommand
-      ? speak(this.readableCommand, {onDone: this.showOptions})
-      : _.delay(this.showOptions, 500)
+  componentDidMount() {
+    this.readCommandAndShowOptions()
+  }
+
+  componentDidUpdate(prevProps){
+    if(!_.isEqual(prevProps.words, this.props.words)){
+      this.readCommandAndShowOptions()
+    }
   }
 
   render() {
@@ -29,12 +39,12 @@ export default class PlayScreen extends Component {
 
     return <Fragment>
       <TopbarContainer>
-        <PositionRight><ReadingCommandButton command={this.readableCommand}/></PositionRight>
+        <PositionRight><ReadingCommandButton command={this.readableCommand()}/></PositionRight>
         <Command text={command} word={correctWord}/>
       </TopbarContainer>
       <OptionsContainer shouldShowOptions={this.state.shouldShowOptions}
-                        onCorrect={() => this.props.onCorrectAnswer(this.state.incorrectAnswers)}
-                        onIncorrect={() => this.setState({incorrectAnswers: this.state.incorrectAnswers + 1})}
+                        onCorrect={() => this.setState({shouldShowOptions: false}, this.props.onCorrectAnswer(this.state.incorrectAnswers))}
+                        onIncorrect={() => this.setState({incorrectAnswers: this.state.incorrectAnswers + 1}, this.props.onIncorrectAnswer)}
                         {..._.omit(optionsProps, 'shouldReadCommand')} />
     </Fragment>
   }
