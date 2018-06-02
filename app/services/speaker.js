@@ -1,7 +1,7 @@
 import {Speech} from 'expo';
 import _ from "lodash"
 
-const defauultOptions = {language: "en"};
+const defauultOptions = {language: "pl"};
 
 export const speak = (text, options = {}) => {
     const onDone = _.once(options.onDone || _.noop)

@@ -30,9 +30,15 @@ export default class PlayScreen extends Component {
 
   componentDidUpdate(prevProps){
     if(!_.isEqual(prevProps.words, this.props.words)){
+
       this.readCommandAndShowOptions()
     }
   }
+
+  onCorrect = () => this.setState({shouldShowOptions: false}, this.props.onCorrectAnswer(this.state.incorrectAnswers))
+
+
+  onIncorrect = () => this.setState({shouldShowOptions: false, incorrectAnswers: this.state.incorrectAnswers + 1}, this.props.onIncorrectAnswer)
 
   render() {
     const {command, correctWord, ...optionsProps} = this.props;
@@ -43,8 +49,8 @@ export default class PlayScreen extends Component {
         <Command text={command} word={correctWord}/>
       </TopbarContainer>
       <OptionsContainer shouldShowOptions={this.state.shouldShowOptions}
-                        onCorrect={() => this.setState({shouldShowOptions: false}, this.props.onCorrectAnswer(this.state.incorrectAnswers))}
-                        onIncorrect={() => this.setState({incorrectAnswers: this.state.incorrectAnswers + 1}, this.props.onIncorrectAnswer)}
+                        onCorrect={this.onCorrect}
+                        onIncorrect={this.onIncorrect}
                         {..._.omit(optionsProps, 'shouldReadCommand')} />
     </Fragment>
   }
