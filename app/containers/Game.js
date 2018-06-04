@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {View, Button, StyleSheet, StatusBar, Animated, Text, Easing, LayoutAnimation} from "react-native"
-import RewardScreen, {ReinforcingScreen} from "../containers/RewardScreen";
+import {RewardScreen, ReinforcingScreen} from "../containers/RewardScreen";
 import _ from "lodash";
 import PlayScreen from "../containers/PlayScreen";
 import {FullBackground} from "../components/ui/FullBackground";
@@ -97,6 +97,7 @@ export default class Game extends Component {
 								   shouldReadCommand={this.props.shouldReadCommand}
 								   onCorrectAnswer={this.props.isTestMode ? this.setNextLevel : this.onLevelFinished}
 								   onIncorrectAnswer={this.props.isTestMode ? this.setNextLevel : _.noop()}
+								   isTestMode={this.props.isTestMode}
 								   showHintAfter={!this.props.isTestMode ? this.props.showHintAfter : null}
 								   timeForAnswer={this.props.isTestMode ? this.props.timeForAnswer : null}
 				/>;

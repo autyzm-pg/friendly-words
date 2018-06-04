@@ -37,8 +37,7 @@ export default class PlayScreen extends Component {
 
   onCorrect = () => this.setState({shouldShowOptions: false}, this.props.onCorrectAnswer(this.state.incorrectAnswers))
 
-
-  onIncorrect = () => this.setState({shouldShowOptions: false, incorrectAnswers: this.state.incorrectAnswers + 1}, this.props.onIncorrectAnswer)
+  onIncorrect = () => this.setState({shouldShowOptions: !this.props.isTestMode, incorrectAnswers: this.state.incorrectAnswers + 1}, this.props.onIncorrectAnswer)
 
   render() {
     const {command, correctWord, ...optionsProps} = this.props;
