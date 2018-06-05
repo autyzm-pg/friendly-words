@@ -40,7 +40,8 @@ const GameScreen = ({navigation}) => {
     return (
         <ConfigConsumer>
             { (config, mode) => {
-                const isTestMode = true //mode === ModeTypes.test
+                const isTestMode = mode === ModeTypes.test
+
                 const materials = isTestMode ? _.filter(config.materials, 'isInTestMode') : config.materials,
                     repetitions = isTestMode ? config.testConfig.numberOfRepetitions : config.numberOfRepetitions;
 

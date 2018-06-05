@@ -99,6 +99,7 @@ export default class Game extends Component {
 								   onIncorrectAnswer={this.props.isTestMode ? this.setNextLevel : _.noop()}
 								   showHintAfter={!this.props.isTestMode ? this.props.showHintAfter : null}
 								   timeForAnswer={this.props.isTestMode ? this.props.timeForAnswer : null}
+								   isTestMode={this.props.isTestMode}
 				/>;
                 break;
             case GAME_STATES.summary:

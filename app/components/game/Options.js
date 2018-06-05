@@ -74,7 +74,7 @@ export default class   Options extends React.Component {
 
   showHint() {
     this.props.onIncorrect && this.props.onIncorrect();
-    this.setState({shouldShowHint: !!this.props.showHintAfter});
+    this.setState({shouldShowHint: true});
   }
 
   render() {
