@@ -6,7 +6,7 @@ SOURCE=`dirname $0`
 
 # Add ms appcenter api key
 if [[ ! -z "${API_KEY}" ]]; then
-    echo "Injecting APPCENTER_API_KEY"
+    echo "Injecting APPCENTER_API_KEY to $SOURCE/android/app/src/main/assets/appcenter-config.json"
     echo "{ \"app_secret\": \"$API_KEY\" }" > $SOURCE/android/app/src/main/assets/appcenter-config.json
     echo "{ \"app_secret\": \"$API_KEY\" }" > $SOURCE/android/app/build/intermediates/assets/dev19/debug/appcenter-config.json
 fi
