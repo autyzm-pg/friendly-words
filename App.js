@@ -11,6 +11,7 @@ import {readActiveConfig, readConfigs} from "./app/services/db/configs";
 import {ModeTypes} from "./app/services/db/format";
 import ConfigProvider from "./app/containers/ConfigProvider";
 import ConfigConsumer from "./app/containers/ConfigConsumer";
+import Analytics from "appcenter-analytics"
 
 const configFromDbToGameScreen = ({config}) => ({
     ...config,
@@ -126,6 +127,8 @@ export default class App extends React.Component {
     }
 
     async componentDidMount() {
+        Analytics.trackEvent("App loaded");
+
         await this.loadAssets();
         const {config, mode} = await this.loadConfig();
         this.setState({
