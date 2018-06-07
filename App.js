@@ -12,6 +12,7 @@ import {ModeTypes} from "./app/services/db/format";
 import ConfigProvider from "./app/containers/ConfigProvider";
 import ConfigConsumer from "./app/containers/ConfigConsumer";
 import Analytics from "appcenter-analytics"
+import SplashScreen from "./app/containers/SplashScreen";
 
 const configFromDbToGameScreen = ({config}) => ({
     ...config,
@@ -68,10 +69,12 @@ const GameScreen = ({navigation}) => {
 const AppNavigator = StackNavigator(
     {
         Home: {screen: MainScreen},
+        Splash: {screen: SplashScreen},
         Game: {screen: GameScreen}
     },
     {
-        headerMode: "none"
+        headerMode: "none",
+        initialRouteName: "Splash"
 	});
 
 
