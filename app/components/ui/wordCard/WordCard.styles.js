@@ -30,6 +30,6 @@ export const DashedBorder = glamorous.view({
 
 export const LabelText = glamorous(CapriolaText)({
   margin: 8,
-  fontSize: 16,
-  textAlign: "center"
+  textAlign: "center",
+    color: colors.shark
 });

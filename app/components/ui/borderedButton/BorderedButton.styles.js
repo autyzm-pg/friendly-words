@@ -20,7 +20,7 @@ export const RoundWrapper = glamorous.view({
   alignItems: "center",
   flexDirection: "row",
   backgroundColor: colours.white
-}, ({size }) => (
+}, ({size}) => (
     {
         width: buttonSize(size),
         height: buttonSize(size),
