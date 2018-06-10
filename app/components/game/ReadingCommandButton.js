@@ -1,19 +1,25 @@
-import BorderedButton from "../ui/borderedButton/BorderedButton";
 import React, {Component} from "react";
+import _ from 'lodash';
+import BorderedButton from "../ui/borderedButton/BorderedButton";
 import {speak} from '../../services/speaker';
 
 export default class ReadingCommandButton extends Component {
 	constructor(props){
 		super(props);
 		this.toggleAvailability = this.toggleAvailability.bind(this);
-		this.readCommand = this.readCommand.bind(this);
+		this.readCommand = _.throttle(this.readCommand.bind(this), 2000, {'trailing': false});
 		this.state = {
 			isAvailable: true
 		}
 	}
 
+	componentWillUnmount(){
+	    console.log("command button cleanup!")
+	    this.readCommand.cancel();
+    }
+
 	toggleAvailability(){
-		this.setState({isAvailable: !this.state.isAvailable})
+		this.setState((prevState) => ({isAvailable: !prevState.isAvailable}))
 	}
 
 	readCommand(){

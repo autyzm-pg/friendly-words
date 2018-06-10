@@ -4,11 +4,11 @@ import _ from "lodash"
 const defauultOptions = {language: "pl"};
 
 export const speak = (text, options = {}) => {
-    const onDone = _.once(options.onDone || _.noop)
+    const onDone = _.once(options.onDone || _.noop);
     const timer = _.delay(() => {
         console.log("Speaking finished faster. Error in TTS?");
         onDone();
-    }, 600)
+    }, 1000)
     Speech.speak(text, {
         ...defauultOptions,
         ...options,
