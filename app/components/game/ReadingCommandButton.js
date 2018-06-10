@@ -11,11 +11,12 @@ export default class ReadingCommandButton extends Component {
 		this.state = {
 			isAvailable: true
 		}
+		this.cancelTts = null;
 	}
 
 	componentWillUnmount(){
-	    console.log("command button cleanup!")
 	    this.readCommand.cancel();
+	    _.isFunction(this.cancelTts) && this.cancelTts();
     }
 
 	toggleAvailability(){
@@ -24,7 +25,7 @@ export default class ReadingCommandButton extends Component {
 
 	readCommand(){
 		const {onStart, onDone, command} = this.props;
-		speak(command, {
+		this.cancelTts = speak(command, {
 			onStart: () => {onStart && onStart(); this.toggleAvailability()},
 			onDone: () => {onDone && onDone(); this.toggleAvailability()}
 		});
