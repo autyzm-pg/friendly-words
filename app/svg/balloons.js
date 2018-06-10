@@ -1,5 +1,5 @@
 import React from "react"
-import {Svg} from "expo";
+import {Svg} from "react-native-svg";
 const {Path, Polygon, G} = Svg;
 
 //Icons made by Freepik from https://www.flaticon.com is licensed by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
