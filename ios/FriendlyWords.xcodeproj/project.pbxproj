@@ -55,6 +55,8 @@
 		2D37307495DB491490F853E1 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A16CD8447938498888F3715D /* Octicons.ttf */; };
 		B6CC49FA5A1A467680D3B160 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8810C08BDE36441AA0F10F37 /* SimpleLineIcons.ttf */; };
 		7981EFC7BB0E415499FB9379 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90D04C88D3C146FDBDC64B05 /* Zocial.ttf */; };
+		3B4F7B059A554C4696250FD2 /* Capriola-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D05CB4E6D2C414E81E8CD3C /* Capriola-Regular.ttf */; };
+		303589D4998D48669FB746F2 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3073B496EF342CEB8C3C0E1 /* icomoon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -384,6 +386,8 @@
 		A16CD8447938498888F3715D /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8810C08BDE36441AA0F10F37 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		90D04C88D3C146FDBDC64B05 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7D05CB4E6D2C414E81E8CD3C /* Capriola-Regular.ttf */ = {isa = PBXFileReference; name = "Capriola-Regular.ttf"; path = "../app/assets/fonts/Capriola-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E3073B496EF342CEB8C3C0E1 /* icomoon.ttf */ = {isa = PBXFileReference; name = "icomoon.ttf"; path = "../app/assets/fonts/icomoon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +677,8 @@
 				A16CD8447938498888F3715D /* Octicons.ttf */,
 				8810C08BDE36441AA0F10F37 /* SimpleLineIcons.ttf */,
 				90D04C88D3C146FDBDC64B05 /* Zocial.ttf */,
+				7D05CB4E6D2C414E81E8CD3C /* Capriola-Regular.ttf */,
+				E3073B496EF342CEB8C3C0E1 /* icomoon.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1136,6 +1142,8 @@
 				2D37307495DB491490F853E1 /* Octicons.ttf in Resources */,
 				B6CC49FA5A1A467680D3B160 /* SimpleLineIcons.ttf in Resources */,
 				7981EFC7BB0E415499FB9379 /* Zocial.ttf in Resources */,
+				3B4F7B059A554C4696250FD2 /* Capriola-Regular.ttf in Resources */,
+				303589D4998D48669FB746F2 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
