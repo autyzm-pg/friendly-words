@@ -4,18 +4,7 @@ import RewardScreen, {ReinforcingScreen} from "../containers/RewardScreen";
 import _ from "lodash";
 import PlayScreen from "../containers/PlayScreen";
 import {FullBackground} from "../components/ui/FullBackground";
-
-class SummaryScreen extends Component {
-	constructor(props){
-		super(props);
-	}
-
-	render(){
-		return <View>
-			<Button title="Play again" onPress={this.props.onAccept}/>
-		</View>
-	}
-}
+import {SummaryScreen} from "./SummaryScreen";
 
 const GAME_STATES = {
 	reward: "reward",
@@ -52,7 +41,7 @@ export default class Game extends Component {
 		this.showReward = this.showReward.bind(this);
 		this.repeatLevel = this.repeatLevel.bind(this);
 		this.findCorrectAnswer = this.findCorrectAnswer.bind(this);
-		this.state = {gameState: GAME_STATES.play, words: this.props.levels.next().value}
+		this.state = {gameState: GAME_STATES.summary, words: this.props.levels.next().value}
 	}
 
 	setNextLevel() {

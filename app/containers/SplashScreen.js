@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header} from "../components/ui/Header";
+import {JumboHeader} from "../components/ui/Header";
 import CapriolaText from "../components/ui/CapriolaText";
 import {Text, View} from "glamorous-native";
 import Colors from "../assets/colours";
@@ -26,7 +26,7 @@ class SplashScreen extends React.Component {
     render() {
         return <BlueBackground>
             <View paddingHorizontal={90} paddingTop={120}>
-            <Header fontSize={60}>Przyjazne Słowa</Header>
+            <JumboHeader>Przyjazne Słowa</JumboHeader>
             <CapriolaText fontSize={36}>projekt non profit</CapriolaText>
             <Text marginVertical={80} fontSize={24} lineHeight={36} color={Colors.white}>Aplikacje powstają w ramach wspólnego projektu „non-profit” Politechniki
                 Gdańskiej i Fundacji Instytut Wspomagania Rozwoju Dziecka w Gdańsku (www.iwrd.pl). W ramach projektu,
