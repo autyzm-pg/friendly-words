@@ -29,6 +29,21 @@ export const Layout = ({children}) =>
 		{children}
 	</FullBackground>;
 
+const shuffleWithoutThis = (cards) => {
+	const correctIndex = cards.findIndex(card => card.isCorrectAnswer);
+
+	if(cards.length < 2) {
+		return cards;
+	}
+
+	let newCards = cards;
+	while(newCards.findIndex(card => card.isCorrectAnswer) === correctIndex) {
+		newCards = _.shuffle(cards);
+	}
+
+	return newCards;
+};
+
 export default class Game extends Component {
 
 	constructor(props) {
@@ -41,6 +56,11 @@ export default class Game extends Component {
 	}
 
 	setNextLevel() {
+		if(this.state.shouldReconstruct){
+			this.setState((state) => ({gameState: GAME_STATES.play, words: shuffleWithoutThis(state.words), shouldReconstruct: false}));
+			return;
+		}
+
 		const level = this.props.levels.next();
 
 		level.done
@@ -53,7 +73,7 @@ export default class Game extends Component {
 	}
 
 	showReinforce(){
-		this.setState({gameState: GAME_STATES.reinforce})
+		this.setState({gameState: GAME_STATES.reinforce, shouldReconstruct: true})
 	}
 
 	findCorrectAnswer(){
@@ -84,7 +104,7 @@ export default class Game extends Component {
                 break;
             case GAME_STATES.reinforce:
                 return <ReinforcingScreen word={correctWord}
-										onPress={this.setNextLevel}
+										onPress={this.state.shouldReconstruct ? this.repeatLevel : this.setNextLevel}
 										onPrevPress={this.repeatLevel}
 										textReward={_.sample(this.props.textRewards)}
 										shouldReadReward={this.props.shouldReadReward}/>;
