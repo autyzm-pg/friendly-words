@@ -11,6 +11,8 @@ import {readActiveConfig, readConfigs} from "./app/services/db/configs";
 import {ModeTypes} from "./app/services/db/format";
 import ConfigProvider from "./app/containers/ConfigProvider";
 import ConfigConsumer from "./app/containers/ConfigConsumer";
+import Analytics from "appcenter-analytics"
+import SplashScreen from "./app/containers/SplashScreen";
 
 const configFromDbToGameScreen = ({config}) => ({
     ...config,
@@ -40,7 +42,8 @@ const GameScreen = ({navigation}) => {
     return (
         <ConfigConsumer>
             { (config, mode) => {
-                const isTestMode = true //mode === ModeTypes.test
+                const isTestMode = mode === ModeTypes.test
+
                 const materials = isTestMode ? _.filter(config.materials, 'isInTestMode') : config.materials,
                     repetitions = isTestMode ? config.testConfig.numberOfRepetitions : config.numberOfRepetitions;
 
@@ -66,10 +69,12 @@ const GameScreen = ({navigation}) => {
 const AppNavigator = StackNavigator(
     {
         Home: {screen: MainScreen},
+        Splash: {screen: SplashScreen},
         Game: {screen: GameScreen}
     },
     {
-        headerMode: "none"
+        headerMode: "none",
+        initialRouteName: "Splash"
 	});
 
 
@@ -125,6 +130,8 @@ export default class App extends React.Component {
     }
 
     async componentDidMount() {
+        Analytics.trackEvent("App loaded");
+
         await this.loadAssets();
         const {config, mode} = await this.loadConfig();
         this.setState({

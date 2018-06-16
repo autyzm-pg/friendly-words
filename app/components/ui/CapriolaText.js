@@ -1,13 +1,11 @@
 import React from "react"
-import {Text, StyleSheet} from "react-native"
+import glamorous from "glamorous-native";
+import colours from "../../assets/colours";
 
-export default CapriolaText = ({children, style}) =>
- <Text style={[styles.basicText, style]}>{children}</Text>
-
-const styles = StyleSheet.create({
-	basicText: {
-		fontFamily: "capriola-regular",
-		fontSize: 16,
-		color: "#292F36"
-	},
+export default CapriolaText = glamorous.text({
+    fontFamily: "capriola-regular",
+    fontSize: 18,
+    color: colours.white
 });
+
+CapriolaText.propsAreStyleOverrides = true;
