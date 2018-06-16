@@ -41,7 +41,7 @@ export default class Game extends Component {
 		this.showReward = this.showReward.bind(this);
 		this.repeatLevel = this.repeatLevel.bind(this);
 		this.findCorrectAnswer = this.findCorrectAnswer.bind(this);
-		this.state = {gameState: GAME_STATES.summary, words: this.props.levels.next().value}
+		this.state = {gameState: GAME_STATES.play, words: this.props.levels.next().value}
 	}
 
 	setNextLevel() {
