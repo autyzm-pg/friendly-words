@@ -3,7 +3,7 @@ import glamorous from "glamorous-native";
 import colours from "../../assets/colours";
 
 export default CapriolaText = glamorous.text({
-    fontFamily: "capriola-regular",
+    fontFamily: "Capriola-Regular",
     fontSize: 18,
     color: colours.white
 });

@@ -1,9 +1,5 @@
 <resources>
-  <string name="app_name">Przyjazne Słowa</string>
-  <string name="dev_activity_name">Exponent Dev</string>
-  <string name="preference_file_key">host.exp.exponent.SharedPreferences</string>
-  <string name="error_default">Something went wrong. Sorry about that.</string>
-  <string name="error_unable_to_load_experience">Unable to load Experience.</string>
+    <string name="app_name">FriendlyWords</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true">ALWAYS_SEND</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true">ALWAYS_SEND</string>
 </resources>
