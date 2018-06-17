@@ -3,6 +3,6 @@
 <plist version="1.0">
   <dict>
     <key>AppSecret</key>
-    <string/>
+    <string>{APPCENTER_API_SECRET}</string>
   </dict>
 </plist>
