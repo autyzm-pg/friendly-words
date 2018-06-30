@@ -45,7 +45,7 @@
   },
   "rnpm": {
     "assets": [
-      "./app/assets/fonts"
+      "./game-app/assets/fonts"
     ]
   }
 }
