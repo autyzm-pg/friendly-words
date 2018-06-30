@@ -12,6 +12,7 @@
     "appcenter-crashes": "^1.4.0",
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.4",
+    "native-base": "^2.3.10",
     "path": "^0.12.7",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
@@ -19,12 +20,19 @@
     "react-native": "0.55.4",
     "react-native-fit-image": "^1.5.2",
     "react-native-fs": "^2.9.11",
+    "react-native-image-picker": "^0.26.10",
     "react-native-responsive-ui": "^1.1.1",
     "react-native-svg": "^6.3.1",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.0.0-beta.11",
+    "react-redux": "^5.0.7",
+    "react-router-native": "^4.3.0",
     "react-timer-mixin": "^0.13.3",
-    "recompose": "^0.27.0"
+    "recompose": "^0.27.0",
+    "redux": "^4.0.0",
+    "redux-observable": "^0.14.1",
+    "remote-redux-devtools": "^0.5.12",
+    "rxjs": "^5.4.2"
   },
   "devDependencies": {
     "babel-jest": "23.0.1",

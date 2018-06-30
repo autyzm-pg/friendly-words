@@ -1,4 +1,7 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import GameApp from './game-app/App';
+import ManagerApp from "./manager-app/App";
 
-AppRegistry.registerComponent('FriendlyWords', () => App);
+AppRegistry.registerComponent('FriendlyWords', () => GameApp);
+AppRegistry.registerComponent('FriendlyWordsManager', () => ManagerApp);
+

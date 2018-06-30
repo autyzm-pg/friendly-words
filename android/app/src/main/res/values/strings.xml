@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Przyjazne Słowa</string>
+    <string name="game_name">Przyjazne Słowa</string>
+    <string name="manager_name">Przyjazne Słowa - Menadżer</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true">ALWAYS_SEND</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true">ALWAYS_SEND</string>
 </resources>
