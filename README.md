@@ -8,17 +8,17 @@ More about autism and challenges: https://www.autismspeaks.org/what-autism/sympt
 We are using [GitHub Flow](https://guides.github.com/introduction/flow/). Please create pull requests to master branch when contributing.
 
 # How to start
-* follow the [Expo installation tutorial](https://docs.expo.io/versions/latest/introduction/installation.html). 
-As stated in the tutorial you have to choose mobile client for development. You can use your mobile device and/or emulator. 
-Installation tutorial is included in provided link. 
+* follow the [React Native installation tutorial](https://facebook.github.io/react-native/docs/getting-started). Pick the variant "Building projects with native code". Install all the dependencies mentioned in the tutorial (react-native-cli, Android SDK, etc.)
+* Install [yarn](https://yarnpkg.com/lang/en/)
 * clone project from [Friendly Words Github](https://github.com/autyzm-pg/friendly-words)
-* open installed Expo XDE on your desktop, and client on your mobile if you choosen to use one
-* after opening Expo XDE, you should see registration form. If you don't have an account, Sign In or Sign In with Github
-* after successful registration, choose option 'Open existing project', find cloned project in explorer and open it. 
-* after that you should see below screen 
-* in right upper corner, choose 'device option' and select your emulator, 
-or choose 'share' option and scan QR code with Expo app on your mobile 
+* Install dependencies by running command `yarn install` from the project root directory
+* Run an Android emulator or connect an Android device using a USB cable. Make sure to turn on debugging mode on the device.
+* Run command `react-native run-android` from the project's root. It should automatically build the application, install .apk on a connected device or emulator and run a react-native packager in new terminal window.
 * app should be up and running. Be aware that application is using TextToSpeech service to automatically read instructions, so watch out for your volume settings
+* if the application doesn't run even though it has been successfully built, try the following:
+  * close the packager and the application
+  * run `react-native start` - it should start the packager alone, without any building
+  * find the application in installed apps on the device and run it
 
 ## Basic knowledge 
 If you are unfamiliar with React Native, take a look at the following articles:
