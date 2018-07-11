@@ -144,129 +144,131 @@ let CheckWordLearningTest = {
 };
 
 const defaultConfig = {
-    "materials": [
-        {
-            "word": {
-                "name": "Misiu",
-                "tags": "",
+    config: {
+        "materials": [
+            {
+                "word": {
+                    "name": "Misiu",
+                    "tags": "",
+                    "images": [
+                        {
+                            "width": 600,
+                            "height": 595,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/b0c0d89b-4a86-4cbf-b649-f9aeb2d50ddd.jpg"
+                        },
+                        {
+                            "width": 382,
+                            "height": 500,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/bec00a59-42d2-4a43-8fe9-4bdd2b64ceb9.jpg"
+                        },
+                        {
+                            "width": 696,
+                            "height": 700,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/90082e2e-b652-4559-a3e6-64b897924258.jpg"
+                        }
+                    ],
+                    "id": 1004
+                },
+                "isInLearningMode": true,
+                "isInTestMode": true,
                 "images": [
                     {
-                        "width": 600,
-                        "height": 595,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/b0c0d89b-4a86-4cbf-b649-f9aeb2d50ddd.jpg"
                     },
                     {
-                        "width": 382,
-                        "height": 500,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/bec00a59-42d2-4a43-8fe9-4bdd2b64ceb9.jpg"
                     },
                     {
-                        "width": 696,
-                        "height": 700,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/90082e2e-b652-4559-a3e6-64b897924258.jpg"
                     }
-                ],
-                "id": 1004
+                ]
             },
-            "isInLearningMode": true,
-            "isInTestMode": true,
-            "images": [
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/b0c0d89b-4a86-4cbf-b649-f9aeb2d50ddd.jpg"
+            {
+                "word": {
+                    "name": "Tablet",
+                    "tags": "",
+                    "images": [
+                        {
+                            "width": 438,
+                            "height": 438,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/344a9870-433a-425c-86bb-2d1a9b960d29.png"
+                        },
+                        {
+                            "width": 1500,
+                            "height": 1500,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/a94773dd-f43d-4fe0-9343-a1a80d91145b.jpg"
+                        }
+                    ],
+                    "id": 1005
                 },
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/bec00a59-42d2-4a43-8fe9-4bdd2b64ceb9.jpg"
-                },
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/90082e2e-b652-4559-a3e6-64b897924258.jpg"
-                }
-            ]
-        },
-        {
-            "word": {
-                "name": "Tablet",
-                "tags": "",
+                "isInLearningMode": true,
+                "isInTestMode": true,
                 "images": [
                     {
-                        "width": 438,
-                        "height": 438,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/344a9870-433a-425c-86bb-2d1a9b960d29.png"
                     },
                     {
-                        "width": 1500,
-                        "height": 1500,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/a94773dd-f43d-4fe0-9343-a1a80d91145b.jpg"
                     }
-                ],
-                "id": 1005
+                ]
             },
-            "isInLearningMode": true,
-            "isInTestMode": true,
-            "images": [
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/344a9870-433a-425c-86bb-2d1a9b960d29.png"
+            {
+                "word": {
+                    "name": "But",
+                    "tags": "",
+                    "images": [
+                        {
+                            "width": 395,
+                            "height": 236,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/8d051bec-272a-4914-857e-8b4fa9868c3f.jpg"
+                        },
+                        {
+                            "width": 381,
+                            "height": 375,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/79c83968-8e54-49fb-985c-7e57e18d893b.jpg"
+                        },
+                        {
+                            "width": 264,
+                            "height": 225,
+                            "uri": "file:///storage/emulated/0/friendly-words-app/assets/d7ce71af-3af4-4587-911d-fbe674dcf666.jpg"
+                        }
+                    ],
+                    "id": 1002
                 },
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/a94773dd-f43d-4fe0-9343-a1a80d91145b.jpg"
-                }
-            ]
-        },
-        {
-            "word": {
-                "name": "But",
-                "tags": "",
+                "isInLearningMode": true,
+                "isInTestMode": true,
                 "images": [
                     {
-                        "width": 395,
-                        "height": 236,
-                        "uri": "file:///storage/emulated/0/friendly-words-app/assets/8d051bec-272a-4914-857e-8b4fa9868c3f.jpg"
-                    },
-                    {
-                        "width": 381,
-                        "height": 375,
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/79c83968-8e54-49fb-985c-7e57e18d893b.jpg"
                     },
                     {
-                        "width": 264,
-                        "height": 225,
+                        "uri": "file:///storage/emulated/0/friendly-words-app/assets/8d051bec-272a-4914-857e-8b4fa9868c3f.jpg"
+                    },
+                    {
                         "uri": "file:///storage/emulated/0/friendly-words-app/assets/d7ce71af-3af4-4587-911d-fbe674dcf666.jpg"
                     }
-                ],
-                "id": 1002
-            },
-            "isInLearningMode": true,
-            "isInTestMode": true,
-            "images": [
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/79c83968-8e54-49fb-985c-7e57e18d893b.jpg"
-                },
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/8d051bec-272a-4914-857e-8b4fa9868c3f.jpg"
-                },
-                {
-                    "uri": "file:///storage/emulated/0/friendly-words-app/assets/d7ce71af-3af4-4587-911d-fbe674dcf666.jpg"
-                }
-            ]
-        }
-    ],
-    "hintType": [
-        "Wyszarz"
-    ],
-    "commandText": "Pokaż gdzie jest {slowo}",
-    "picturesNumber": 3,
-    "showPicturesLabels": true,
-    "isReadingCommands": false,
-    "showHintAfter": 5,
-    "numberOfRepetitions": 3,
-    "textRewards": [
-        "ŚWIETNIE",
-        "Dobrze"
-    ],
-    "isReadingRewards": false,
-    "animationRewards": [],
-    "testConfig": {
+                ]
+            }
+        ],
+        "hintType": [
+            "Wyszarz"
+        ],
+        "commandText": "Pokaż gdzie jest {slowo}",
+        "picturesNumber": 3,
+        "showPicturesLabels": true,
+        "isReadingCommands": false,
+        "showHintAfter": 5,
         "numberOfRepetitions": 3,
-        "timeForAnswer": 5
+        "textRewards": [
+            "ŚWIETNIE",
+            "Dobrze"
+        ],
+        "isReadingRewards": false,
+        "animationRewards": [],
+        "testConfig": {
+            "numberOfRepetitions": 3,
+            "timeForAnswer": 5
+        }
     }
 };
 
