@@ -1,12 +1,10 @@
 import React from 'react';
 import Game from "./app/containers/Game"
 import {StackNavigator} from "react-navigation";
-import {View, Text} from "react-native";
+import {Text, View} from "react-native";
 import _ from "lodash";
-import {Font, Asset, AppLoading} from "expo";
-import {FrycekConfig, FrycekTestConfig, AdamConfig, KacperConfig} from "./TEMP_CONFIGS"
+import {AdamConfig, defaultConfig, FrycekConfig, FrycekTestConfig, KacperConfig} from "./TEMP_CONFIGS"
 import MainScreen from "./app/containers/MainScreen";
-import images from "./TEMP_IMAGES";
 import {readActiveConfig, readConfigs} from "./app/services/db/configs";
 import {ModeTypes} from "./app/services/db/format";
 import ConfigProvider from "./app/containers/ConfigProvider";
@@ -14,7 +12,7 @@ import ConfigConsumer from "./app/containers/ConfigConsumer";
 import Analytics from "appcenter-analytics"
 import SplashScreen from "./app/containers/SplashScreen";
 
-const configFromDbToGameScreen = ({config}) => ({
+const configFromDbToGameScreen = (config) => ({
     ...config,
     isTextForPicture: config.showPicturesLabels,
     materials: config.materials.map(material => ({
@@ -32,16 +30,16 @@ function prepareLevels(materials, repetitions, optionsNumber) {
                 name: material.name,
                 images: material.images,
                 isCorrectAnswer: true
-			})))));
+            })))));
 
-	levels = _.map(levels, level => _.map(level, material => ({...material, image: _.sample(material.images)})));
-	return _(levels);
+    levels = _.map(levels, level => _.map(level, material => ({...material, image: _.sample(material.images)})));
+    return _(levels);
 }
 
 const GameScreen = ({navigation}) => {
     return (
         <ConfigConsumer>
-            { (config, mode) => {
+            {(config, mode) => {
                 const isTestMode = mode === ModeTypes.test
 
                 const materials = isTestMode ? _.filter(config.materials, 'isInTestMode') : config.materials,
@@ -75,22 +73,7 @@ const AppNavigator = StackNavigator(
     {
         headerMode: "none",
         initialRouteName: "Splash"
-	});
-
-
-function cacheImages(images) {
-    return images.map(image => {
-        if (typeof image === 'string') {
-			return Image.prefetch(image);
-        } else {
-			return Asset.fromModule(image).downloadAsync();
-        }
-	});
-}
-
-function cacheFonts(fonts) {
-	return fonts.map(font => Font.loadAsync(font));
-}
+    });
 
 
 export default class App extends React.Component {
@@ -99,32 +82,23 @@ export default class App extends React.Component {
     };
 
     async loadConfig() {
-        const {id, mode} = await readActiveConfig()
+        const {id, mode = ModeTypes.learning} = await readActiveConfig()
         console.log("Active config id: ", id, "in mode:", mode === ModeTypes.learning ? "learning" : "test")
 
         const configs = await readConfigs()
 
-        const activeConfig = configs.find(config => config.id === id)
+        const activeConfig = configs.find(config => config.id === id) || defaultConfig;
 
         console.log("Active config:", activeConfig)
         return {
-            config: activeConfig,
+            config: activeConfig.config,
             mode: mode,
         }
     }
 
     async loadAssets() {
-		const loadingImages = cacheImages(_.values(images));
 
-        const loadingFonts = cacheFonts([{
-            'capriola-regular': require('./app/assets/Capriola-Regular.ttf'),
-            'Icomoon': require('./app/assets/fonts/icomoon.ttf')
-		}]);
-
-        await Promise.all([
-            ...loadingImages,
-            ...loadingFonts
-        ])
+        await Promise.resolve()
 
         console.log("Loaded all assets")
     }
@@ -142,7 +116,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        return !this.state.assetsLoaded ? <AppLoading/> : (
+        return !this.state.assetsLoaded ? <Text>Loading</Text> : (
             <ConfigProvider config={this.state.config} mode={this.state.mode}>
                 <AppNavigator/>
             </ConfigProvider>

@@ -1,5 +1,5 @@
-import {Speech} from 'expo';
 import _ from "lodash"
+import Speech from "../libs/speech"
 
 const defauultOptions = {language: "pl"};
 
@@ -9,7 +9,7 @@ export const speak = (text, options = {}) => {
         console.log("Speaking finished faster. Error in TTS?");
         onDone();
     }, 1000)
-    Speech.speak(text, {
+    Speech.speak(text, text, {
         ...defauultOptions,
         ...options,
         onDone: () => {
