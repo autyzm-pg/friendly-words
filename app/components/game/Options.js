@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {View, TouchableOpacity, StyleSheet, Text, UIManager} from "react-native";
 import _ from "lodash";
 import WordCard from "../ui/wordCard/WordCard";
@@ -27,7 +27,7 @@ class CorretOption extends React.Component {
 }
 
 const FadeAwayHintOptions = ({materials, onCorrect, onIncorrect, shouldShowHint, cardSize}) => {
-  return <View style={styles.container}>
+  return <Fragment>
     {_.map(materials, (material, idx) => {
         return material.isCorrectAnswer
           ? <CorretOption key={idx} cardSize={cardSize} material={material.name} image={material.image}
@@ -36,7 +36,7 @@ const FadeAwayHintOptions = ({materials, onCorrect, onIncorrect, shouldShowHint,
                           shouldFade={shouldShowHint} onPress={onIncorrect}/>
       }
     )}
-  </View>
+  </Fragment>
 };
 
 const seconds = (duration) => duration * 1000;
@@ -89,14 +89,3 @@ export default class   Options extends React.Component {
                                 shouldShowHint={this.state.shouldShowHint}/>
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    flex: 1,
-    alignSelf: "stretch",
-    justifyContent: "space-around",
-    alignItems: "center",
-  }
-});

@@ -1,10 +1,10 @@
 import React, {Component} from "react"
-import {ContainerStyles} from "../ui/Screens"
-import {View, StyleSheet} from "react-native"
+import glamorous from 'glamorous-native';
 import Options from "./Options";
 import _ from "lodash";
+import {moderateScale} from "../../services/scalign";
 
-const CARDS_MARGIN = 50;
+const CARDS_MARGIN = moderateScale(15);
 const MAX_CARD_WIDTH = 500;
 export default class OptionsContainer extends Component {
     constructor(props){
@@ -20,20 +20,21 @@ export default class OptionsContainer extends Component {
     }
 
     render() {
-        const {shouldShowOptions, shouldShowPicturesLabels, words, ...rest} = this.props
-        const materials = shouldShowPicturesLabels ? words : _.map(words, word => _.omit(word, 'name')),
-            style = [ContainerStyles.fullSizeContainer, ContainerStyles.centeredContainer, styles.optionsContainer];
+        const {shouldShowOptions, shouldShowPicturesLabels, words, ...rest} = this.props;
+        const materials = shouldShowPicturesLabels ? words : _.map(words, word => _.omit(word, 'name'));
 
-        console.log('optionsContainer', rest)
-        return <View onLayout={this.onLayout} style={style}>
+        return <FullWidthContainer onLayout={this.onLayout}>
             { shouldShowOptions &&
             <Options cardSize={this.state.cardSize} materials={materials} {...rest} /> }
-        </View>
+        </FullWidthContainer>
     }
 }
 
-const styles = StyleSheet.create({
-    optionsContainer: {
-        alignSelf: "stretch",
-    }
-})
+const FullWidthContainer = glamorous.view({
+    alignSelf: 'stretch',
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: "center",
+});
