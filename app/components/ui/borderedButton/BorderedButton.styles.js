@@ -1,8 +1,5 @@
 import colours from "../../../assets/colours";
-import {isPhone} from "../../../services/deviceInfo";
 import glamorous from "glamorous-native";
-
-const buttonSize = size => size ? size : isPhone() ? 40 : 60;
 
 export const RoundDashedBorder = glamorous.view({
     padding: 7,
@@ -11,7 +8,7 @@ export const RoundDashedBorder = glamorous.view({
     borderWidth: 3,
 }, ({size}) => (
     {
-        borderRadius: buttonSize(size)
+        borderRadius: size
     }
 ));
 
@@ -22,8 +19,8 @@ export const RoundWrapper = glamorous.view({
   backgroundColor: colours.white
 }, ({size}) => (
     {
-        width: buttonSize(size),
-        height: buttonSize(size),
-        borderRadius: buttonSize(size)
+        width: size,
+        height: size,
+        borderRadius: size
     }
 ));

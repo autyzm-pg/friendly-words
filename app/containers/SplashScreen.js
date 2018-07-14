@@ -1,5 +1,5 @@
 import React from 'react';
-import {JumboHeader, Header} from "../components/ui/Header";
+import {JumboHeader, Subheader} from "../components/ui/Header";
 import {Text, View} from "glamorous-native";
 import Colors from "../assets/colours";
 import {BlueBackground} from "../components/ui/FullBackground";
@@ -25,9 +25,9 @@ class SplashScreen extends React.Component {
 
     render() {
         return <BlueBackground>
-            <View paddingHorizontal={moderateScale(36)} flex={1} paddingTop={moderateScale(20)}>
+            <View paddingHorizontal={moderateScale(36)} flex={1} justifyContent="center" paddingTop={moderateScale(20)}>
                 <JumboHeader>Przyjazne Słowa</JumboHeader>
-                <Header>projekt non profit</Header>
+                <Subheader>projekt non profit</Subheader>
                 <Text marginVertical={moderateScale(20)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
                     Aplikacje powstają w ramach wspólnego projektu „non-profit” Politechniki
                     Gdańskiej i Fundacji Instytut Wspomagania Rozwoju Dziecka w Gdańsku (www.iwrd.pl). W ramach projektu,
