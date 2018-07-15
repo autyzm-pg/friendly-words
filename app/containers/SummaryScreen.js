@@ -6,6 +6,7 @@ import CapriolaText from "../components/ui/CapriolaText";
 import Icon from "../components/ui/Icon";
 import {Layout} from "./Game";
 import colours from "../assets/colours";
+import {View} from "glamorous-native";
 
 export class SummaryScreen extends Component {
     constructor(props){
@@ -14,10 +15,12 @@ export class SummaryScreen extends Component {
 
     render(){
         return <Layout>
-            <Icon name="happy" color={colours.white} size={70}/>
-            <JumboHeader>Koniec gry!</JumboHeader>
-            <PlayButton onPress={this.props.onAccept}/>
-            <CapriolaText>Zagraj ponownie</CapriolaText>
+            <View flex={1} alignItems={"center"} justifyContent={"center"}>
+                <Icon name="happy" color={colours.white} size={70}/>
+                <JumboHeader>Koniec gry!</JumboHeader>
+                <PlayButton onPress={this.props.onAccept}/>
+                <CapriolaText>Zagraj ponownie</CapriolaText>
+            </View>
         </Layout>
     }
 }
