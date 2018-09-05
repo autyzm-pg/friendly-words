@@ -2,12 +2,17 @@ import * as R from "ramda"
 import {_addRecord, _createTable, _deleteRecord, _readTable, _updateRecord} from "./tables"
 import Mutex from "./mutex"
 import {readFileAsync, writeFileAsync} from "../file-system/file"
+import {injectIfDoesntExist} from "../../libs/asset-injector";
+import {appDataPath, appDirectory} from "../file-system/paths";
 
 const readFile = fileName => readFileAsync(fileName)
 const writeToFile = (fileName, data) => writeFileAsync(fileName, data)
 
 const readDbFile = (fileName, defaultDb = {}) => () => readFile(fileName)
-    .catch(R.always(JSON.stringify(defaultDb)))
+    .catch(async () => {
+        await injectIfDoesntExist(appDirectory, appDataPath)
+        return readFile(fileName)
+    })
     .then(configsStr => JSON.parse(configsStr))
 const writeDbFile = fileName => newDb => writeToFile(fileName, JSON.stringify(newDb))
 const readDbFileWithLock = (mutex, readDb) => () => mutex.lock().then(readDb)
