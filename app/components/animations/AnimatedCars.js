@@ -1,12 +1,16 @@
 import React, {Component} from "react";
 import {View, StyleSheet} from "react-native";
-import {BusCar, MiniBusCar, CityCar} from "../../svg/cars";
+import {BusCar, MiniBusCar, CityCar, ExcavatorCar, GarbageTruckCar, TramCar, TruckCar} from "../../svg/cars";
 import withDriveRightAnimation from "./driveRightAnimation";
 import _ from "lodash";
 
 const AnimatedBusCar = withDriveRightAnimation(BusCar);
 const AnimatedMiniBusCar = withDriveRightAnimation(MiniBusCar);
 const AnimatedCityCars = withDriveRightAnimation(CityCar);
+const AnimatedExcavatorCar = withDriveRightAnimation(ExcavatorCar);
+const AnimatedTramCar = withDriveRightAnimation(TramCar);
+const AnimatedGarbageTruckCar = withDriveRightAnimation(GarbageTruckCar);
+const AnimatedTruckCar = withDriveRightAnimation(TruckCar);
 
 export default class CarsAnimated extends Component {
 
@@ -36,6 +40,44 @@ export default class CarsAnimated extends Component {
                     {carColor: "#EF5562", linesColor: "#DB3D45"},
                     {carColor: "#30BCE9", linesColor: "#29A7D3"}
                     ]
+            },
+            {
+                component:AnimatedExcavatorCar,
+                styles: [
+                    {carColor: "#47D2A5", darkerCarColor: "#35CA99"},
+                    {carColor: "#EF5562", darkerCarColor: "#DB3D45"},
+                    {carColor: "#30BCE9", darkerCarColor: "#29A7D3"}
+                ]
+            },
+            {
+                component:AnimatedGarbageTruckCar,
+                styles: [
+                    {carColor: "#47D2A5", darkerCarColor: "#35CA99",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"},
+                    {carColor: "#EF5562", darkerCarColor: "#DB3D45",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"},
+                    {carColor: "#30BCE9", darkerCarColor: "#29A7D3",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"}
+                ]
+            },
+            {
+                component:AnimatedTramCar,
+                styles: [
+                    {carColor: "#47D2A5", linesColor : "#30BCE9", darkerCarColor: "#35CA99"},
+                    {carColor: "#EF5562", linesColor : "#30BCE9", darkerCarColor: "#DB3D45"},
+                    {carColor: "#30BCE9", linesColor : "#30BCE9", darkerCarColor: "#29A7D3"}
+                ]
+            },
+            {
+                component:AnimatedTruckCar,
+                styles: [
+                    {carColor: "#47D2A5", darkerCarColor: "#35CA99",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"},
+                    {carColor: "#EF5562", darkerCarColor: "#DB3D45",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"},
+                    {carColor: "#30BCE9", darkerCarColor: "#29A7D3",
+                        containerColor:"#000000", containerLinesColor :"#F00F0F"}
+                ]
             }]
     }
 
@@ -45,7 +87,9 @@ export default class CarsAnimated extends Component {
                 let car = _.sample(this.cars);
                 let RandomCar = car.component;
                 let carStyles = _.sample(car.styles);
-                let randomSize = _.random(130, 180);
+                //let randomSize = _.random(130, 180);
+                let randomSize = _.random(300, 400);
+
                 return <RandomCar {...carStyles}{...{width: randomSize, height:randomSize}} key={idx}/>
             })
             }
