@@ -7,22 +7,19 @@ export default function withDriveRightAnimation(WrappedComponent){
 
         constructor(props){
             super(props);
-            this.screenHeight = Dimensions.get("window").height;
             this.screenWidth = Dimensions.get("window").width;
             this.position = {
-                y: new Animated.Value(_.random(0, this.screenHeight)),
-                x: new Animated.Value(_.random(0, this.screenWidth))
-            };
-            this.screenWidthw = Dimensions.get("window").width;
+                x: new Animated.Value(50)
+            }
         }
 
         componentDidMount(){
             Animated.timing(this.position.x, {
                 toValue: 2*this.screenWidth,
-                duration: 4000,
-                easing: Easing.ease
+                duration: _.random(1000,4000),
+                easing: Easing.cubic
             }).start();
-        }
+            }
 
         render(){
             return <Animated.View style={{transform: [{translateX: this.position.x}]}}><WrappedComponent {...this.props}/></Animated.View>

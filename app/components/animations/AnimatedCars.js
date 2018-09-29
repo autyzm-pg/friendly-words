@@ -41,11 +41,11 @@ export default class CarsAnimated extends Component {
 
     render() {
         return <View style={style.animatedContainer} pointerEvents="none">
-            {_.map(_.range(_.random(20, 30)), idx => {
+            {_.map(_.range(_.random(2, 4)), idx => {
                 let car = _.sample(this.cars);
                 let RandomCar = car.component;
                 let carStyles = _.sample(car.styles);
-                let randomSize = _.random(200, 300);
+                let randomSize = _.random(130, 180);
                 return <RandomCar {...carStyles}{...{width: randomSize, height:randomSize}} key={idx}/>
             })
             }
@@ -55,7 +55,7 @@ export default class CarsAnimated extends Component {
 
 const style = StyleSheet.create({
     animatedContainer: {
-        flexDirection: "row",
+        flexDirection: "column",
         flexWrap: "wrap",
         justifyContent: "center",
         position: "absolute",
