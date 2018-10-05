@@ -12,6 +12,7 @@ import ReadingCommandButton from '../components/game/ReadingCommandButton';
 import Colors from '../assets/colours';
 import {moderateScale} from "../services/scalign";
 import AnimatedCars from "../components/animations/AnimatedCars";
+import AnimatedChildishCars from "../components/animations/AnimatedChildishCar";
 
 const withReward = WrappedComponent =>
   class extends Component {
@@ -30,7 +31,8 @@ const withReward = WrappedComponent =>
         <WrappedComponent {...this.props} />
         {/*TODO switch aminations*/}
         {/*<AnimatedBalloons/>*/}
-        <AnimatedCars/>
+        {/*<AnimatedCars/>*/}
+          <AnimatedChildishCars/>
       </Fragment>
     }
   };

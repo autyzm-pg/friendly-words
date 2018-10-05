@@ -10,7 +10,7 @@ export default function withDriveRightAnimation(WrappedComponent){
             this.screenWidth = Dimensions.get("window").width;
             this.position = {
                 x: new Animated.Value(50)
-            }
+            };
         }
 
         componentDidMount(){
@@ -22,7 +22,7 @@ export default function withDriveRightAnimation(WrappedComponent){
             }
 
         render(){
-            return <Animated.View style={{transform: [{translateX: this.position.x}]}}><WrappedComponent {...this.props}/></Animated.View>
+            return <Animated.View style={{transform: [{translateX: this.position.x}]}}><WrappedComponent {...this.props}/></Animated.View>;
         }
     }
 }

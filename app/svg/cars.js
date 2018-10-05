@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import Svg, {Path, Polygon, G, Circle, Rect} from "react-native-svg";
 
 //Icons made by Freepik from https://www.flaticon.com is licensed by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0

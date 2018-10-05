@@ -87,7 +87,7 @@ export default class CarsAnimated extends Component {
                         containerColor:"#DCDBDE", containerLinesColor :"#CAC9CD"}
                 ]
             }
-        ]
+        ];
     }
 
     render() {
@@ -97,7 +97,7 @@ export default class CarsAnimated extends Component {
                 let RandomCar = car.component;
                 let carStyles = _.sample(car.styles);
                 let randomSize = _.random(130, 180);
-                return <RandomCar {...carStyles}{...{width: randomSize, height:randomSize}} key={idx}/>
+                return <RandomCar {...carStyles}{...{width: randomSize, height:randomSize}} key={idx}/>;
             })
             }
         </View>;
