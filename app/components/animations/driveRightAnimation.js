@@ -24,5 +24,5 @@ export default function withDriveRightAnimation(WrappedComponent){
         render(){
             return <Animated.View style={{transform: [{translateX: this.position.x}]}}><WrappedComponent {...this.props}/></Animated.View>;
         }
-    }
+    };
 }
