@@ -44,7 +44,7 @@ export class ReinforcingScreen extends Component {
         <Header>{this.props.word.name}</Header>
         <PositionRight><ReadingCommandButton command={this.props.word.name}/></PositionRight>
       </TopbarContainer>
-      <View flex={1} alignItems={"center"} justifyContent={"center"}>
+      <View flex={1} alignItems={"center"} justifyContent={"center"} marginTop={moderateScale(30)}>
         <WordCard imageUrl={this.props.word.image} cardSize={width/2.5} noBorder={true}/>
       </View>
       <BottombarContainer>
