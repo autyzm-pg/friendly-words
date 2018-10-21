@@ -6,7 +6,9 @@ import colours from "../../../assets/colours";
 import {RoundDashedBorder, RoundWrapper} from "./BorderedButton.styles";
 import {moderateScale} from "../../../services/scalign";
 
-export default BorderedButton = ({color, onPress, icon, disabled, size=moderateScale(36) , iconSize=moderateScale(21)}) =>
+export const BORDERED_BUTTON_SIZE = moderateScale(36);
+
+export default BorderedButton = ({color, onPress, icon, disabled, size=BORDERED_BUTTON_SIZE , iconSize=moderateScale(21)}) =>
   <TouchableOpacity onPress={onPress} disabled={disabled}>
 		<RoundDashedBorder size={size}>
 			<RoundWrapper size={size}>
