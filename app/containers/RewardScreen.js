@@ -11,6 +11,8 @@ import {TopbarContainer, BottombarContainer, PositionRight} from "../components/
 import ReadingCommandButton from '../components/game/ReadingCommandButton';
 import Colors from '../assets/colours';
 import {moderateScale} from "../services/scalign";
+import AnimatedCars from "../components/animations/AnimatedCars";
+import AnimatedChildishCars from "../components/animations/AnimatedChildishCar";
 
 const withReward = WrappedComponent =>
   class extends Component {
@@ -27,7 +29,10 @@ const withReward = WrappedComponent =>
     render() {
       return <Fragment>
         <WrappedComponent {...this.props} />
-        <AnimatedBalloons/>
+        {/*TODO switch aminations*/}
+        {/*<AnimatedBalloons/>*/}
+        {/*<AnimatedCars/>*/}
+          <AnimatedChildishCars/>
       </Fragment>
     }
   };
