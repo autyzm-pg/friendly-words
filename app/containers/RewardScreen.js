@@ -14,6 +14,12 @@ import {moderateScale} from "../services/scalign";
 import AnimatedCars from "../components/animations/AnimatedCars";
 import AnimatedChildishCars from "../components/animations/AnimatedChildishCar";
 
+const REWARDS = [AnimatedBalloons, AnimatedCars, AnimatedChildishCars];
+
+const SampleReward = () => {
+  const Reward = _.sample(REWARDS);
+  return <Reward />;
+};
 const withReward = WrappedComponent =>
   class extends Component {
     componentDidMount() {
@@ -29,10 +35,7 @@ const withReward = WrappedComponent =>
     render() {
       return <Fragment>
         <WrappedComponent {...this.props} />
-        {/*TODO switch aminations*/}
-        {/*<AnimatedBalloons/>*/}
-        {/*<AnimatedCars/>*/}
-          <AnimatedChildishCars/>
+        <SampleReward />
       </Fragment>
     }
   };
