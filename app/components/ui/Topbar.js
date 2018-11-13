@@ -1,4 +1,5 @@
 import glamorous from 'glamorous-native';
+import {moderateScale} from "../../services/scalign";
 
 export const PositionRight = glamorous.view({
     position: "absolute",
@@ -11,6 +12,7 @@ export const TopbarContainer = glamorous.view({
   flexDirection: "row",
   alignSelf: "stretch",
   justifyContent: "center",
+  marginBottom: 20
 });
 
 export const BottombarContainer = glamorous(TopbarContainer)({justifyContent: "space-between", marginTop: "auto"});

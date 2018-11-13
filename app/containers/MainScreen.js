@@ -7,7 +7,7 @@ import {View} from "glamorous-native";
 
 export default MainScreen = ({navigation}) =>
 	<Layout>
-		<View flex={1} alignItems={"center"} justifyContent={"center"}>
+		<View flex={1} alignItems={"center"} justifyContent={"space-around"}>
         	<JumboHeader>Przyjazne Słowa</JumboHeader>
 			<PlayButton onPress={() => navigation.navigate("Game")}/>
 		</View>
