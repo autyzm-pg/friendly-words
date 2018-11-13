@@ -1,12 +1,19 @@
 import React from 'react';
+import {PixelRatio} from "react-native";
 import {JumboHeader, Subheader} from "../components/ui/Header";
-import {Text, View} from "glamorous-native";
+import {Text, View, Image} from "glamorous-native";
 import Colors from "../assets/colours";
 import {BlueBackground} from "../components/ui/FullBackground";
 import {moderateScale} from "../services/scalign";
-
 const SCREEN_TIMEOUT = 4000;
 const NEXT_SCREEN = "Home";
+
+const isHighResolutionScreen = () => PixelRatio.get() > 1;
+const getLogosImagesPath = () => {
+    const assetsPath = '../assets/images';
+    return `${assetsPath}/${isHighResolutionScreen() ? 'loga@2x.png' : 'loga.png'}`;
+}
+
 
 class SplashScreen extends React.Component {
     constructor(props) {
@@ -35,7 +42,12 @@ class SplashScreen extends React.Component {
                     uczestnik projektu nie odnosi materialnych korzyści z udziału w wytwarzaniu aplikacji.
                 </Text>
             </View>
-            <View paddingHorizontal={moderateScale(36)} marginTop={moderateScale(20)} paddingVertical={moderateScale(20)} backgroundColor={Colors.white}><Text>some logos</Text></View>
+            <View marginTop={moderateScale(20)}
+                  height={moderateScale(70)}
+                  justifyContent="center"
+                  backgroundColor={Colors.white}>
+                <Image resizeMode="contain" height={moderateScale(60)} source={require("../assets/images/loga.png")} />
+            </View>
         </BlueBackground>;
 
     }

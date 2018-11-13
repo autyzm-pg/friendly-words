@@ -9,7 +9,7 @@ import Game from "./Game";
 
 export default MainScreen = ({navigation}) =>
 	<Layout>
-		<View flex={1} alignItems={"center"} justifyContent={"center"}>
+		<View flex={1} alignItems={"center"} justifyContent={"space-around"}>
         	<JumboHeader>Przyjazne Słowa</JumboHeader>
             <Configurationheader>Obecna konfiguracja:</Configurationheader>
             <ConfigConsumer>

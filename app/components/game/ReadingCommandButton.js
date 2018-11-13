@@ -19,15 +19,15 @@ export default class ReadingCommandButton extends Component {
 	    _.isFunction(this.cancelTts) && this.cancelTts();
     }
 
-	toggleAvailability(){
-		this.setState((prevState) => ({isAvailable: !prevState.isAvailable}))
+	toggleAvailability(isAvailable){
+		this.setState({isAvailable})
 	}
 
 	readCommand(){
 		const {onStart, onDone, command} = this.props;
 		this.cancelTts = speak(command, {
-			onStart: () => {onStart && onStart(); this.toggleAvailability()},
-			onDone: () => {onDone && onDone(); this.toggleAvailability()}
+			onStart: () => {onStart && onStart(); this.toggleAvailability(false)},
+			onDone: () => {onDone && onDone(); this.toggleAvailability(true)}
 		});
 	}
 

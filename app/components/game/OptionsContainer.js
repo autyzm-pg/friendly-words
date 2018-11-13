@@ -35,6 +35,6 @@ const FullWidthContainer = glamorous.view({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
 });
