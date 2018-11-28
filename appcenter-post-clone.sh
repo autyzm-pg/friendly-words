@@ -2,6 +2,13 @@
 
 echo "Starting post clone script..."
 
+# fixing node version compatibility problem
+set -ex
+brew uninstall node@6
+NODE_VERSION="8.9.4"
+curl "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.pkg" > "$HOME/Downloads/node-installer.pkg"
+sudo installer -store -pkg "$HOME/Downloads/node-installer.pkg" -target "/"
+
 SOURCE=`dirname $0`
 
 # Add ms appcenter api key
