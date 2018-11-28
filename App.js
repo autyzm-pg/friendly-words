@@ -91,7 +91,7 @@ export default class App extends React.Component {
 
         console.log("Active config:", activeConfig)
         return {
-            config: activeConfig.config,
+            config: {...activeConfig.config, name: activeConfig.name},
             mode: mode,
         }
     }

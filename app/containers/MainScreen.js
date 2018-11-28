@@ -11,12 +11,8 @@ export default MainScreen = ({navigation}) =>
 	<Layout>
 		<View flex={1} alignItems={"center"} justifyContent={"space-around"}>
         	<JumboHeader>Przyjazne Słowa</JumboHeader>
-            <Configurationheader>Obecna konfiguracja:</Configurationheader>
             <ConfigConsumer>
-                {(config) => {
-                    return <Configurationheader>{config.name}</Configurationheader>
-                	}
-                }
+                {(config) =>  <Configurationheader>{`Aktywna konfiguracja: ${config.name}`}</Configurationheader>}
             </ConfigConsumer>
 			<PlayButton onPress={() => navigation.navigate("Game")}/>
 		</View>
