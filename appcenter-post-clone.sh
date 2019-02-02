@@ -2,6 +2,9 @@
 
 echo "Starting post clone script..."
 
+echo "Accepting Android SDK"
+./accept-licenses.sh
+
 # fixing node version compatibility problem
 set -ex
 brew uninstall node@6
