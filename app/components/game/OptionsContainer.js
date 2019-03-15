@@ -4,7 +4,7 @@ import Options from "./Options";
 import _ from "lodash";
 import {moderateScale} from "../../services/scalign";
 
-const CARDS_MARGIN = moderateScale(15);
+const CARDS_MARGIN = moderateScale(30);
 const MAX_CARD_WIDTH = 500;
 export default class OptionsContainer extends Component {
     constructor(props){
