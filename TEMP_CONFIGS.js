@@ -22,13 +22,14 @@ const CONFIG2 = {
 
     hintType: ["fade"],
     picturesNumber: 3,
-    isTextForPicture: false,
+    isTextForPicture: false, //nie ma, jest showPicturesLabels
     isReadingCommands: true,
     showHintAfter: 10,
     commandText: "Where is {slowo}?",
     numberOfRepetitions: 2,
     textRewards: ["Good", "Keep going!", "Yes"],
     isReadingRewards: false,
+    name:"config2"
 };
 
 let TTStest = {
@@ -60,6 +61,7 @@ let TTStest = {
     numberOfRepetitions: 3,
     textRewards: ["Good", "Super", "Keep going"],
     isReadingRewards: true,
+    name:"TTStest"
 };
 
 let TextUnderCardsTest = {
@@ -87,6 +89,7 @@ let TextUnderCardsTest = {
     numberOfRepetitions: 3,
     textRewards: ["Good!"],
     isReadingRewards: false,
+    name:"TextUnderCardsTest"
 };
 
 let ManyRepetitionsTest = {
@@ -114,6 +117,7 @@ let ManyRepetitionsTest = {
     numberOfRepetitions: 10,
     textRewards: ["Good job!"],
     isReadingRewards: false,
+    name:"ManyRepetitionsTest"
 };
 
 let CheckWordLearningTest = {
@@ -141,6 +145,7 @@ let CheckWordLearningTest = {
     numberOfRepetitions: 3,
     textRewards: ["Good"],
     isReadingRewards: true,
+    name:"CheckWordLearningTest"
 };
 
 const defaultConfig = {
@@ -258,6 +263,7 @@ const defaultConfig = {
         "showPicturesLabels": true,
         "isReadingCommands": false,
         "showHintAfter": 5,
+        "name":"defaultConfig",
         "numberOfRepetitions": 3,
         "textRewards": [
             "ŚWIETNIE",
