@@ -41,7 +41,7 @@ const FadeAwayHintOptions = ({materials, onCorrect, onIncorrect, shouldShowHint,
 
 const seconds = (duration) => duration * 1000;
 
-export default class   Options extends React.Component {
+export default class Options extends React.Component {
   constructor(props) {
     super(props);
 
