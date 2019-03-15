@@ -9,39 +9,65 @@ export default function withLeftOrRightAndRotateAnimation(WrappedComponent) {
         constructor(props) {
             super(props);
             this.animatedValue = new Animated.Value(0);
-            this.screenHeight = Dimensions.get("window").height;
+            this.screenWeight = Dimensions.get("window").width;
         }
 
         componentDidMount() {
             Animated.timing(
                 this.animatedValue, {
                     toValue: 1,
-                    duration: _.random(4000, 8000),
+                    duration: 5000,
+                    easing: Easing.linear
                 }).start()
         }
 
         render() {
-            const animation = {
+            const goRightAnimation = {
                 transform: [
                     {
-                        translateY: this.animatedValue.interpolate({
+                        translateX: this.animatedValue.interpolate({
                             inputRange: [0, 1],
-                            outputRange: [-500, 2*this.screenHeight]
+                            outputRange: [-this.screenWeight/2 - 150, this.screenWeight/2 + 150]
                         })
                     },
                     {rotate:  this.animatedValue.interpolate({
                             inputRange: [0, 1],
-                            outputRange: ['0deg', _.random(-5, 5) * 200 + 'deg'],
+                            outputRange: ['0deg', '500deg'],
                         })
                     }
                 ]
             };
 
-            return (
-                <Animated.View style={[styles.box, animation]}>
-                    <WrappedComponent {...this.props}/>
-                </Animated.View>
-            );
+            const goLeftAnimation = {
+                transform: [
+                    {
+                        translateX: this.animatedValue.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [this.screenWeight/2 + 150 , -this.screenWeight/2 - 150]
+                        })
+                    },
+                    {rotate:  this.animatedValue.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: ['0deg', '-500deg'],
+                        })
+                    }
+                ]
+            };
+
+            if(_.random(0,1)==0) {
+                return (
+                    <Animated.View style={[styles.box, goRightAnimation]}>
+                        <WrappedComponent {...this.props}/>
+                    </Animated.View>
+                );
+            }
+            else {
+                return (
+                    <Animated.View style={[styles.box, goLeftAnimation]}>
+                        <WrappedComponent {...this.props}/>
+                    </Animated.View>
+                );
+            }
         }
     }
 }

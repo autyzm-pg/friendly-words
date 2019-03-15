@@ -41,11 +41,11 @@ export default class BallAnimated extends Component {
 
     render() {
         return <View style={style.animatedContainer} pointerEvents="none">
-            {_.map(_.range(_.random(15, 20)), idx => {
+            {_.map(_.range(1), idx => {
                 let ball = _.sample(this.balls);
                 let RandomBall = ball.component;
-                let randomSize = _.random(100, 180);
-                return <RandomBall {...{width: randomSize, height:randomSize}} key={idx}/>
+                let size = 300;
+                return <RandomBall {...{width: size, height:size}} key={idx}/>
             })
             }
         </View>;
