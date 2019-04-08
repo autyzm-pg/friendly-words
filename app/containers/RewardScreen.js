@@ -14,9 +14,10 @@ import {moderateScale} from "../services/scalign";
 import AnimatedCars from "../components/animations/AnimatedCars";
 import AnimatedChildishCars from "../components/animations/AnimatedChildishCar";
 import AnimatedBall from "../components/animations/AnimatedBall";
+import AnimatedFlower from "../components/animations/AnimatedFlower";
 
-//const REWARDS = [AnimatedBalloons, AnimatedCars, AnimatedChildishCars];
-const REWARDS = [AnimatedBall];
+const REWARDS = [ AnimatedBalloons, AnimatedCars, AnimatedChildishCars, AnimatedFlower, AnimatedBall];
+
 
 const SampleReward = () => {
   const Reward = _.sample(REWARDS);
