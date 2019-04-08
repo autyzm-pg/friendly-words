@@ -5,6 +5,7 @@ import {Text, View, Image} from "glamorous-native";
 import Colors from "../assets/colours";
 import {BlueBackground} from "../components/ui/FullBackground";
 import {moderateScale} from "../services/scalign";
+import * as constants from "../../android/app/src/main/res/constantStrings";
 const SCREEN_TIMEOUT = 4000;
 const NEXT_SCREEN = "Home";
 
@@ -33,13 +34,10 @@ class SplashScreen extends React.Component {
     render() {
         return <BlueBackground>
             <View paddingHorizontal={moderateScale(36)} flex={1} justifyContent="center" paddingTop={moderateScale(20)}>
-                <JumboHeader>Przyjazne Słowa</JumboHeader>
-                <Subheader>projekt non profit</Subheader>
+                <JumboHeader>{constants.AppTitle}</JumboHeader>
+                <Subheader>{constants.NonProfitProject}</Subheader>
                 <Text marginVertical={moderateScale(20)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
-                    Aplikacje powstają w ramach wspólnego projektu „non-profit” Politechniki
-                    Gdańskiej i Fundacji Instytut Wspomagania Rozwoju Dziecka w Gdańsku (www.iwrd.pl). W ramach projektu,
-                    kierujemy się dwiema zasadami: non-profit oraz open-source. IWRD, Politechnika Gdańska ani żaden
-                    uczestnik projektu nie odnosi materialnych korzyści z udziału w wytwarzaniu aplikacji.
+                    {constants.AppInfo}
                 </Text>
             </View>
             <View marginTop={moderateScale(20)}
