@@ -15,26 +15,19 @@ import AnimatedCars from "../components/animations/AnimatedCars";
 import AnimatedChildishCars from "../components/animations/AnimatedChildishCar";
 import AnimatedBall from "../components/animations/AnimatedBall";
 import AnimatedFlower from "../components/animations/AnimatedFlower";
+import {Cool, Good, Great} from "../../android/app/src/main/res/constantStrings";
+
 
 const REWARDS = [ AnimatedBalloons, AnimatedCars, AnimatedChildishCars, AnimatedFlower, AnimatedBall];
 
 
 const SampleReward = () => {
   const Reward = _.sample(REWARDS);
+
   return <Reward />;
 };
 const withReward = WrappedComponent =>
   class extends Component {
-    componentDidMount() {
-      this.props.shouldReadReward
-        ? this.readReward()
-        : _.noop();
-    }
-
-    readReward() {
-      speak(this.props.textReward)
-    }
-
     render() {
       return <Fragment>
         <WrappedComponent {...this.props} />
@@ -45,8 +38,47 @@ const withReward = WrappedComponent =>
 
 export class ReinforcingScreen extends Component {
 
+  readReward() {
+    var rewardFile = '';
+    switch (this.props.textReward) {
+
+      case Good:
+        rewardFile = 'dobrze.m4a';
+        break;
+
+      case Cool:
+        rewardFile = 'sup.m4a';
+        break;
+
+      case Great:
+        rewardFile = 'swietnie.m4a';
+        break;
+
+      default:
+        break;
+    }
+    if(rewardFile!=''){
+      var Sound = require('react-native-sound');
+      const sound = new Sound(rewardFile, null, (error) => {
+        if (error) {
+          console.log('failed to load the sound', error);
+          speak(this.props.textReward);
+        }
+        else {
+          sound.play();
+        }
+      });
+    }
+    else {
+      speak(this.props.textReward);
+    }
+  }
+
   componentDidMount() {
-    speak(this.props.word.name)
+    this.props.shouldReadReward
+        ? this.readReward()
+        : _.noop();
+    speak(this.props.word.name);
   }
 
   render() {

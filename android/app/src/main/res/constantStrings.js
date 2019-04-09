@@ -11,3 +11,6 @@ export const AppInfo = "Aplikacje powstają w ramach wspólnego projektu „non-
 export const NonProfitProject = "projekt non profit 2";
 export const GameOver = "Koniec gry!  2";
 export const PlayAgain = "Zagraj ponownie 2";
+export const Good = "Dobrze";
+export const Great = "ŚWIETNIE";
+export const Cool = "Super";
