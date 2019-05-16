@@ -38,47 +38,33 @@ const withReward = WrappedComponent =>
 
 export class ReinforcingScreen extends Component {
 
+  rewardFile: string ='';
   readReward() {
-    var rewardFile = '';
     switch (this.props.textReward) {
-
       case Good:
-        rewardFile = 'dobrze.m4a';
+        this.rewardFile = 'dobrze.m4a';
         break;
 
       case Cool:
-        rewardFile = 'sup.m4a';
+        this.rewardFile = 'sup.m4a';
         break;
 
       case Great:
-        rewardFile = 'swietnie.m4a';
+        this.rewardFile = 'swietnie.m4a';
         break;
 
       default:
+        console.debug("Odczytało słowo" + this.props.textReward);
         break;
-    }
-    if(rewardFile!=''){
-      var Sound = require('react-native-sound');
-      const sound = new Sound(rewardFile, null, (error) => {
-        if (error) {
-          console.log('failed to load the sound', error);
-          speak(this.props.textReward);
-        }
-        else {
-          sound.play();
-        }
-      });
-    }
-    else {
-      speak(this.props.textReward);
     }
   }
 
   componentDidMount() {
     this.props.shouldReadReward
         ? this.readReward()
-        : _.noop();
-    speak(this.props.word.name);
+        : this.rewardFile='';
+    speak(this.props.word.name, this.rewardFile);
+    //this.rewardFile='';
   }
 
   render() {

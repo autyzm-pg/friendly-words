@@ -16,7 +16,7 @@ export default class PlayScreen extends Component {
 
     readCommandAndShowOptions = () => {
         this.props.shouldReadCommand
-            ? speak(this.readableCommand(), {onDone: this.showOptions})
+            ? speak(this.readableCommand(), '', {onDone: this.showOptions})
             : _.delay(this.showOptions, 500)
     }
 
