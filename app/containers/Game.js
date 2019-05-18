@@ -1,10 +1,11 @@
 import React, {Component} from "react"
 import {View, Button, StyleSheet, StatusBar, Animated, Text, Easing, LayoutAnimation} from "react-native"
-import RewardScreen, {ReinforcingScreen} from "../containers/RewardScreen";
+import RewardScreen from "../containers/RewardScreen";
 import _ from "lodash";
 import PlayScreen from "../containers/PlayScreen";
 import {FullBackground} from "../components/ui/FullBackground";
 import {SummaryScreen} from "./SummaryScreen";
+import {ReinforcingScreen} from "./ReinforcingScreen";
 
 const GAME_STATES = {
 	reward: "reward",
