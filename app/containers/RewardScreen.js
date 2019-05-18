@@ -19,6 +19,9 @@ import {Cool, Good, Great} from "../../android/app/src/main/res/constantStrings"
 
 
 const REWARDS = [ AnimatedBalloons, AnimatedCars, AnimatedChildishCars, AnimatedFlower, AnimatedBall];
+const GOOD_VOICE_REWARDS = [ 'dobrze1.mp3', 'dobrze2.mp3', 'dobrze3.mp3','dobrze4.mp3'];
+const GREAT_VOICE_REWARDS = [ 'sup1.mp3', 'sup2.mp3', 'sup3.mp3','sup4.mp3'];
+const SUPER_VOICE_REWARDS = [ 'swietnie1.mp3', 'swietnie2.mp3', 'swietnie3.mp3','swietnie4.mp3','swietnie5.mp3'];
 
 
 const SampleReward = () => {
@@ -38,33 +41,32 @@ const withReward = WrappedComponent =>
 
 export class ReinforcingScreen extends Component {
 
-  rewardFile: string ='';
+  rew ='';
   readReward() {
     switch (this.props.textReward) {
       case Good:
-        this.rewardFile = 'dobrze.m4a';
+        this.rew = _.sample(GOOD_VOICE_REWARDS);
         break;
 
       case Cool:
-        this.rewardFile = 'sup.m4a';
+        this.rew = _.sample(SUPER_VOICE_REWARDS);
         break;
 
       case Great:
-        this.rewardFile = 'swietnie.m4a';
+        this.rew = _.sample(GREAT_VOICE_REWARDS);
         break;
 
       default:
-        console.debug("Odczytało słowo" + this.props.textReward);
         break;
     }
+
+    speak(this.props.word.name, this.rew);
   }
 
   componentDidMount() {
     this.props.shouldReadReward
         ? this.readReward()
-        : this.rewardFile='';
-    speak(this.props.word.name, this.rewardFile);
-    //this.rewardFile='';
+        : speak(this.props.word.name, '');
   }
 
   render() {
