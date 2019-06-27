@@ -266,7 +266,6 @@ const defaultConfig = {
         "name":"defaultConfig",
         "numberOfRepetitions": 3,
         "textRewards": [
-            "ŚWIETNIE",
             "Dobrze"
         ],
         "isReadingRewards": false,

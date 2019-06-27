@@ -20,8 +20,8 @@ import {Cool, Good, Great} from "../../android/app/src/main/res/constantStrings"
 
 const REWARDS = [ AnimatedBalloons, AnimatedCars, AnimatedChildishCars, AnimatedFlower, AnimatedBall];
 const GOOD_VOICE_REWARDS = [ 'dobrze1.mp3', 'dobrze2.mp3', 'dobrze3.mp3','dobrze4.mp3'];
-const GREAT_VOICE_REWARDS = [ 'sup1.mp3', 'sup2.mp3', 'sup3.mp3','sup4.mp3'];
-const SUPER_VOICE_REWARDS = [ 'swietnie1.mp3', 'swietnie2.mp3', 'swietnie3.mp3','swietnie4.mp3','swietnie5.mp3'];
+const SUPER_VOICE_REWARDS = [ 'sup1.mp3', 'sup2.mp3', 'sup3.mp3','sup4.mp3'];
+const GREAT_VOICE_REWARDS = [ 'swietnie1.mp3', 'swietnie2.mp3', 'swietnie3.mp3','swietnie4.mp3','swietnie5.mp3'];
 
 const SampleReward = () => {
   const Reward = _.sample(REWARDS);
@@ -53,6 +53,7 @@ export default class RewardScreen extends Component {
       default:
         break;
     }
+    console.log("2TextReward-> " + this.props.textReward+" Nagroda => " + rewardFile);
     speak(this.props.word.name, rewardFile);
   }
 

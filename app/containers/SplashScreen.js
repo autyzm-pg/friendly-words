@@ -1,6 +1,6 @@
 import React from 'react';
 import {PixelRatio} from "react-native";
-import {JumboHeader, Subheader} from "../components/ui/Header";
+import {JumboHeader, Subheader,TwoAppHeader} from "../components/ui/Header";
 import {Text, View, Image} from "glamorous-native";
 import Colors from "../assets/colours";
 import {BlueBackground} from "../components/ui/FullBackground";
@@ -36,9 +36,10 @@ class SplashScreen extends React.Component {
             <View paddingHorizontal={moderateScale(36)} flex={1} justifyContent="center" paddingTop={moderateScale(20)}>
                 <JumboHeader>{constants.AppTitle}</JumboHeader>
                 <Subheader>{constants.NonProfitProject}</Subheader>
-                <Text marginVertical={moderateScale(20)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
+                <Text marginVertical={moderateScale(10)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
                     {constants.AppInfo}
                 </Text>
+                <TwoAppHeader>{constants.TwoAppInfo}</TwoAppHeader>
             </View>
             <View marginTop={moderateScale(20)}
                   height={moderateScale(70)}
