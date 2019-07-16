@@ -34,11 +34,14 @@ class SplashScreen extends React.Component {
     render() {
         return <BlueBackground>
             <View paddingHorizontal={moderateScale(36)} flex={1} justifyContent="center" paddingTop={moderateScale(20)}>
-                <JumboHeader>{constants.AppTitle}</JumboHeader>
+
+                    <JumboHeader>{constants.AppTitle}</JumboHeader>
                 <Subheader>{constants.NonProfitProject}</Subheader>
-                <Text marginVertical={moderateScale(10)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
-                    {constants.AppInfo}
-                </Text>
+
+                    <Text marginVertical={moderateScale(10)} fontSize={moderateScale(10)} lineHeight={moderateScale(16)} color={Colors.white}>
+                        {constants.AppInfo}
+                    </Text>
+
                 <TwoAppHeader>{constants.TwoAppInfo}</TwoAppHeader>
             </View>
             <View marginTop={moderateScale(20)}

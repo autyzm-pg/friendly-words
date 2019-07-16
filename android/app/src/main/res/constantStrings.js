@@ -5,7 +5,7 @@ export const ContactUs = "W razie problemów skontaktuj się z nami:";
 export const ActiveConfiguration = "Aktywna konfiguracja: ";
 export const Word = "Słowo";
 export const AppInfo = "Aplikacje powstają w ramach wspólnego projektu „non-profit” Politechniki " +
-                        "Gdańskiej i Fundacji Instytut Wspomagania Rozwoju Dziecka w Gdańsku (www.iwrd.pl). W ramach projektu," +
+                        "Gdańskiej i Fundacji Instytut Wspomagania Rozwoju Dziecka w Gdańsku (www.iwrd.pl). W ramach projektu, " +
                         "kierujemy się dwiema zasadami: non-profit oraz open-source. IWRD, Politechnika Gdańska ani żaden " +
                         "uczestnik projektu nie odnosi materialnych korzyści z udziału w wytwarzaniu aplikacji.\n"+
                         "Więcej informacji o aplikacji i projekcie: autyzm.eti.pg.gda.pl";
