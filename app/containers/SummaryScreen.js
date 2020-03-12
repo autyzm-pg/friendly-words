@@ -7,6 +7,7 @@ import Icon from "../components/ui/Icon";
 import {Layout} from "./Game";
 import colours from "../assets/colours";
 import {View} from "glamorous-native";
+import * as constants from "../../android/app/src/main/res/constantStrings";
 
 export class SummaryScreen extends Component {
     constructor(props){
@@ -17,9 +18,9 @@ export class SummaryScreen extends Component {
         return <Layout>
             <View flex={1} alignItems={"center"} justifyContent={"center"}>
                 <Icon name="happy" color={colours.white} size={70}/>
-                <JumboHeader>Koniec gry!</JumboHeader>
+                <JumboHeader>{constants.GameOver}</JumboHeader>
                 <PlayButton onPress={this.props.onAccept}/>
-                <CapriolaText>Zagraj ponownie</CapriolaText>
+                <CapriolaText>{constants.PlayAgain}</CapriolaText>
             </View>
         </Layout>
     }
