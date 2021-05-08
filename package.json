@@ -11,7 +11,7 @@
     "appcenter-analytics": "^1.4.0",
     "appcenter-crashes": "^1.4.0",
     "glamorous-native": "^1.4.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "path": "^0.12.7",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
